@@ -5,8 +5,8 @@
 //  Created by Marco Dell'Isola on 17/02/23.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
