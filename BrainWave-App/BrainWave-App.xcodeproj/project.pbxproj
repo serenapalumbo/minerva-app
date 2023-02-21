@@ -11,6 +11,8 @@
 		034168B1299F934100A729DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168B0299F934100A729DC /* ContentView.swift */; };
 		034168B3299F934200A729DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B2299F934200A729DC /* Assets.xcassets */; };
 		034168B6299F934200A729DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B5299F934200A729DC /* Preview Assets.xcassets */; };
+		0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */; };
+		0419DF4F29A4CBA400149FC7 /* ImageGenerationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF4E29A4CBA400149FC7 /* ImageGenerationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		034168B2299F934200A729DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		034168B5299F934200A729DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		034168BC299F934200A729DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DallEImageGenerator.swift; sourceTree = "<group>"; };
+		0419DF4E29A4CBA400149FC7 /* ImageGenerationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				034168AE299F934100A729DC /* BrainWave_AppApp.swift */,
 				034168B0299F934100A729DC /* ContentView.swift */,
+				0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */,
+				0419DF4E29A4CBA400149FC7 /* ImageGenerationResponse.swift */,
 				034168B2299F934200A729DC /* Assets.xcassets */,
 				034168BC299F934200A729DC /* Info.plist */,
 				034168B4299F934200A729DC /* Preview Content */,
@@ -160,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */,
 				034168B1299F934100A729DC /* ContentView.swift in Sources */,
+				0419DF4F29A4CBA400149FC7 /* ImageGenerationResponse.swift in Sources */,
 				034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
