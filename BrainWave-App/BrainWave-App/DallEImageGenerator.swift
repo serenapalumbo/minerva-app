@@ -20,10 +20,10 @@ class DallEImageGenerator {
         }
         
         let parameters: [String: Any] = [
-            "prompt" : prompt,
-            "n" : 1,
-            "size" : "1024x1024",
-            "user" : sessionID
+            "prompt": prompt,
+            "n": 4,
+            "size": "1024x1024",
+            "user": sessionID
         ]
         let data: Data = try JSONSerialization.data(withJSONObject: parameters)
         
@@ -35,12 +35,9 @@ class DallEImageGenerator {
         
         let (response, _) = try await URLSession.shared.data(for: request)
         let result = try JSONDecoder().decode(ImageGenerationResponse.self, from: response)
-        
-        print(result)
-        
+                
         return result
     }
-    
 }
 
 enum ImageError: Error {

@@ -9,10 +9,10 @@ import CoreData
 import SwiftUI
 
 struct ContentView: View {
-    let apiKey = "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" // TODO: logic of retrieving the api key
+    let apiKey = "API_KEY" // TODO: logic of retrieving the api key
     
     @State private var prompt = ""
-    @State private var image: UIImage? = nil
+    @State private var generatedImages: [UIImage] = []
     @State private var isLoading = false
     
     var body: some View {
@@ -26,11 +26,14 @@ struct ContentView: View {
                     do {
                         let response = try await DallEImageGenerator.shared.generateImage(withPrompt: prompt, apiKey: apiKey)
                         
-                        if let url = response.data.map(\.url).first {
+                        for url in response.data.map(\.url) {
+                            // encode each url retrieved from the api
                             let (data, _) = try await URLSession.shared.data(from: url)
-                            image = UIImage(data: data)
-                            isLoading = false
+                            // append the UIImage built by the url retrieved from the api to the array of generated images
+                            generatedImages.append(UIImage(data: data)!)
                         }
+                        
+                        isLoading = false
                     } catch {
                         print(error.localizedDescription)
                     }
@@ -38,22 +41,26 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
             
-            if let image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 256, height: 256)
-            } else {
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 256, height: 256)
-                    .overlay {
-                        if isLoading {
-                            VStack {
-                                ProgressView()
+            HStack {
+                ForEach(generatedImages, id: \.self) { image in
+                    if let image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 256, height: 256)
+                    } else {
+                        Rectangle()
+                            .fill(Color.blue)
+                            .frame(width: 256, height: 256)
+                            .overlay {
+                                if isLoading {
+                                    VStack {
+                                        ProgressView()
+                                    }
+                                }
                             }
-                        }
                     }
+                }
             }
         }
         .padding()
