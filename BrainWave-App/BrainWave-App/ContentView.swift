@@ -9,11 +9,13 @@ import CoreData
 import SwiftUI
 
 struct ContentView: View {
-    let apiKey = "API_KEY" // TODO: logic of retrieving the api key
+    let apiKey = "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" // TODO: logic of retrieving the api key
     
     @State private var prompt = ""
-    @State private var generatedImages: [UIImage] = []
+//    @State private var generatedImages: [UIImage] = []
+    @State private var generatedImages: [String] = []
     @State private var isLoading = false
+    @State private var isDownloaded = false
     
     var body: some View {
         VStack {
@@ -21,34 +23,32 @@ struct ContentView: View {
                 .textFieldStyle(.roundedBorder)
             
             Button("Generate") {
-                isLoading = true
-                Task {
-                    do {
-                        let response = try await DallEImageGenerator.shared.generateImage(withPrompt: prompt, apiKey: apiKey)
-                        
-                        for url in response.data.map(\.url) {
-                            // encode each url retrieved from the api
-                            let (data, _) = try await URLSession.shared.data(from: url)
-                            // append the UIImage built by the url retrieved from the api to the array of generated images
-                            generatedImages.append(UIImage(data: data)!)
+                isLoading = false
+                isDownloaded = false
+                if !isLoading {
+                    isLoading = true
+                    Task {
+                        do {
+                            generatedImages.removeAll()
+                            let response = try await DallEImageGenerator.shared.generateImage(withPrompt: prompt, apiKey: apiKey)
+                            
+                            for url in response.data.map(\.url) {
+                                // append each url retrieved from the api to the array of the url of generated images
+                                generatedImages.append(String(describing: url))
+                            }
+                            
+                            isDownloaded = true
+                        } catch {
+                            print(error.localizedDescription)
                         }
-                        
-                        isLoading = false
-                    } catch {
-                        print(error.localizedDescription)
                     }
                 }
             }
             .buttonStyle(.borderedProminent)
             
             HStack {
-                ForEach(generatedImages, id: \.self) { image in
-                    if let image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 256, height: 256)
-                    } else {
+                if !isDownloaded {
+                    ForEach(0..<4) {_ in
                         Rectangle()
                             .fill(Color.blue)
                             .frame(width: 256, height: 256)
@@ -59,6 +59,24 @@ struct ContentView: View {
                                     }
                                 }
                             }
+                    }
+                } else {
+                    ForEach(generatedImages, id: \.self) { item in
+                        AsyncImage(url: URL(string: item)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Rectangle()
+                                .fill(Color.blue)
+                                .frame(width: 256, height: 256)
+                                .overlay {
+                                    if isLoading {
+                                        VStack {
+                                            ProgressView()
+                                        }
+                                    }
+                                }
+                        }
+                        .frame(width: 256, height: 256)
                     }
                 }
             }
