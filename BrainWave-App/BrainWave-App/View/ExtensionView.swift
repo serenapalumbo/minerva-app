@@ -18,15 +18,16 @@ struct PromptView: View {
                     .foregroundColor(.gray)
                     .padding(.trailing, 15)
             }
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.937, green: 0.937, blue: 0.942), lineWidth: 2))
-            .background(Color(red: 0.937, green: 0.937, blue: 0.942))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("myGray"), lineWidth: 2))
+            .background(Color("myGray"))
             .frame(width: 919.57, height: 37)
             .cornerRadius(10)
             Spacer()
             Image(systemName: "square.and.arrow.up")
                 .foregroundColor(.gray)
             Spacer()
-            Button("Generate") {
+            
+            Button {
                 generationViewModel.isLoading = false
                 generationViewModel.isDownloaded = false
                 if !generationViewModel.isLoading {
@@ -46,10 +47,13 @@ struct PromptView: View {
                         }
                     }
                 }
-            }.frame(width: 208.35, height: 35)
-                .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
-                .foregroundColor(.white)
-                .cornerRadius(10)
+            }label: {
+                Text("Generate")
+                    .frame(width: 208.35, height: 35)
+                        .background(Color("AccentColor"))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+            }
         }
         .frame(width: 1175)
     }
@@ -116,7 +120,7 @@ struct ResultView: View {
                             .frame(width: dimImages, height: dimImages)
                             Button("Variation") {
                                 // TODO: Recall Variation function
-                            }.frame(width: dimImages, height: dimImages)
+                            }.frame(width: dimImages, height: 33)
                                 .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
                                 .cornerRadius(10)
                                 .bold()
