@@ -11,10 +11,11 @@ import SwiftUI
 class DallEImageGenerator {
     static let shared = DallEImageGenerator()
     let sessionID = UUID().uuidString
+    let apiKey = "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" // TODO: logic of retrieving the api key
     
     private init() { }
     
-    func generateImage(withPrompt prompt: String, apiKey: String) async throws -> ImageGenerationResponse {
+    func generateImage(withPrompt prompt: String) async throws -> ImageGenerationResponse {
         guard let url = URL(string: "https://api.openai.com/v1/images/generations") else {
             throw ImageError.badURL
         }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0340037029ACC35F0094A8D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0340037229ACC35F0094A8D7 /* Localizable.strings */; };
+		0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340037529ACE7130094A8D7 /* GenerationViewModel.swift */; };
+		0340037A29ACECF80094A8D7 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340037929ACECF80094A8D7 /* CollectionView.swift */; };
 		034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168AE299F934100A729DC /* BrainWave_AppApp.swift */; };
 		034168B1299F934100A729DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168B0299F934100A729DC /* ContentView.swift */; };
 		034168B3299F934200A729DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B2299F934200A729DC /* Assets.xcassets */; };
@@ -17,15 +19,15 @@
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
-		D326257F29AA29A600715BEB /* Prova.swift in Sources */ = {isa = PBXBuildFile; fileRef = D326257E29AA29A600715BEB /* Prova.swift */; };
-		D380EAC529A7E07A005EB3B4 /* MyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* MyCollectionView.swift */; };
-		D380EAC729A7E115005EB3B4 /* ButtonCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC629A7E115005EB3B4 /* ButtonCollection.swift */; };
+		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0340037129ACC35F0094A8D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0340037329ACC3640094A8D7 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0340037429ACC37C0094A8D7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0340037529ACE7130094A8D7 /* GenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewModel.swift; sourceTree = "<group>"; };
+		0340037929ACECF80094A8D7 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		034168AB299F934100A729DC /* BrainWave-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BrainWave-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		034168AE299F934100A729DC /* BrainWave_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainWave_AppApp.swift; sourceTree = "<group>"; };
 		034168B0299F934100A729DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,9 +39,7 @@
 		0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0419DF5429A4D10000149FC7 /* Collections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collections.xcdatamodel; sourceTree = "<group>"; };
 		0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
-		D326257E29AA29A600715BEB /* Prova.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prova.swift; sourceTree = "<group>"; };
-		D380EAC429A7E07A005EB3B4 /* MyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionView.swift; sourceTree = "<group>"; };
-		D380EAC629A7E115005EB3B4 /* ButtonCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollection.swift; sourceTree = "<group>"; };
+		D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +53,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0340037729ACEC3F0094A8D7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0340037829ACEC4A0094A8D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				034168B0299F934100A729DC /* ContentView.swift */,
+				0340037929ACECF80094A8D7 /* CollectionView.swift */,
+				D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		034168A2299F934100A729DC = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				034168AE299F934100A729DC /* BrainWave_AppApp.swift */,
-				034168B0299F934100A729DC /* ContentView.swift */,
-				0340037229ACC35F0094A8D7 /* Localizable.strings */,
-				D380EAC429A7E07A005EB3B4 /* MyCollectionView.swift */,
-				0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */,
-				D380EAC629A7E115005EB3B4 /* ButtonCollection.swift */,
-				D326257E29AA29A600715BEB /* Prova.swift */,
+				0340037829ACEC4A0094A8D7 /* View */,
+				0340037729ACEC3F0094A8D7 /* Service */,
 				0419DF5229A4CFC000149FC7 /* Models */,
 				0419DF5629A4D1B600149FC7 /* ViewModels */,
+				0340037229ACC35F0094A8D7 /* Localizable.strings */,
 				034168B2299F934200A729DC /* Assets.xcassets */,
 				034168BC299F934200A729DC /* Info.plist */,
 				034168B4299F934200A729DC /* Preview Content */,
@@ -109,6 +124,7 @@
 		0419DF5629A4D1B600149FC7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0340037529ACE7130094A8D7 /* GenerationViewModel.swift */,
 				0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -209,14 +225,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */,
+				0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */,
 				0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */,
 				0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */,
 				034168B1299F934100A729DC /* ContentView.swift in Sources */,
 				0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */,
 				0419DF4F29A4CBA400149FC7 /* ImageGenerationResponse.swift in Sources */,
-				D326257F29AA29A600715BEB /* Prova.swift in Sources */,
-				D380EAC729A7E115005EB3B4 /* ButtonCollection.swift in Sources */,
-				D380EAC529A7E07A005EB3B4 /* MyCollectionView.swift in Sources */,
+				D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */,
+				0340037A29ACECF80094A8D7 /* CollectionView.swift in Sources */,
 				034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

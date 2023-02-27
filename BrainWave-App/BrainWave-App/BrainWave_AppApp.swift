@@ -11,7 +11,7 @@ import SwiftUI
 struct BrainWave_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(GenerationViewModel())
         }
     }
 }
