@@ -1,5 +1,5 @@
 //
-//  MyCollectionView.swift
+//  ExtensionView.swift
 //  BrainWave-App
 //
 //  Created by benedetta on 23/02/23.
@@ -10,7 +10,7 @@ import SwiftUI
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     var body: some View {
-        HStack{
+        HStack {
             HStack {
                 TextField("Write a prompt...", text: $generationViewModel.prompt)
                     .padding(10)
@@ -20,10 +20,10 @@ struct PromptView: View {
             }
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.937, green: 0.937, blue: 0.942), lineWidth: 2))
             .background(Color(red: 0.937, green: 0.937, blue: 0.942))
-            .frame(width: 919.57, height: 37)
+            .frame(width: generationViewModel.screenWidth * 0.7, height: generationViewModel.screenHeight * 0.04)
             .cornerRadius(10)
             Spacer()
-            Image(systemName: "square.and.arrow.up")
+            Image(systemName: "arrow.up.to.line")
                 .foregroundColor(.gray)
             Spacer()
             Button("Generate") {
@@ -46,12 +46,12 @@ struct PromptView: View {
                         }
                     }
                 }
-            }.frame(width: 208.35, height: 35)
+            }.frame(width: generationViewModel.screenWidth*0.12, height: generationViewModel.screenHeight*0.04)
                 .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }
-        .frame(width: 1175)
+        .frame(width: generationViewModel.screenWidth * 0.87)
     }
 }
 
@@ -97,7 +97,7 @@ struct ResultView: View {
                     .padding(.trailing, paddingImages)
                 } else {
                     ForEach(generationViewModel.generatedImages, id: \.self) { item in
-                        VStack{
+                        VStack {
                             AsyncImage(url: URL(string: item)) { image in
                                 image.resizable()
                             } placeholder: {
@@ -159,7 +159,7 @@ struct ButtonCollection: View {
             ZStack(alignment: .leading) {
                 Rectangle()
                     .fill(ImagePaint(image: Image("b1")))
-                    .frame(width: 1175 , height: 98.08)
+                    .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight*0.1)
                     .scaledToFit()
                     .cornerRadius(20)
                 Text("My Collection")
@@ -176,6 +176,7 @@ struct ButtonCollection: View {
 
 struct View_Previews: PreviewProvider {
     static var previews: some View {
+        PromptView().environmentObject(GenerationViewModel())
         ButtonCollection().environmentObject(GenerationViewModel())
         ResultView().environmentObject(GenerationViewModel())
     }
