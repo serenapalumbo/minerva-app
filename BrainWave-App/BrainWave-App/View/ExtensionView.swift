@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var body: some View {
         HStack {
             HStack {
@@ -38,6 +39,9 @@ struct PromptView: View {
                             for url in response.data.map(\.url) {
                                 // append each url retrieved from the api to the array of the url of generated images
                                 generationViewModel.generatedImages.append(String(describing: url))
+                                
+                                let (data, _) = try await URLSession.shared.data(from: url)
+                                collectionViewModel.addNewImage(image: UIImage(data: data)!)
                             }
 
                             generationViewModel.isDownloaded = true

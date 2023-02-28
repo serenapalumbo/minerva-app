@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct BrainWave_AppApp: App {
+    @StateObject var collectionViewModel = CollectionsViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(GenerationViewModel())
