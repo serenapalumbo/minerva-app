@@ -158,7 +158,7 @@ struct ButtonCollection: View {
         NavigationLink(destination: CollectionView()) {
             ZStack(alignment: .leading) {
                 Rectangle()
-                    .fill(ImagePaint(image: Image("b1")))
+                    .fill(ImagePaint(image: Image("background1")))
                     .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight*0.1)
                     .scaledToFit()
                     .cornerRadius(20)
