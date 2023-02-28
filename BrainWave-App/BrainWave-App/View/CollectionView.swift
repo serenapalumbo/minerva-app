@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CollectionView: View {
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    
     var body: some View {
         NavigationStack {
             VStack {

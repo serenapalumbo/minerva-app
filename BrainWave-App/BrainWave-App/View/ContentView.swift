@@ -13,6 +13,7 @@ struct ContentView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     @EnvironmentObject var generationViewModel: GenerationViewModel
+    @StateObject var collectionViewModel = CollectionsViewModel()
 
     var body: some View {
         NavigationStack {
@@ -33,6 +34,7 @@ struct ContentView: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
+        .environmentObject(collectionViewModel)
     }
 }
 
