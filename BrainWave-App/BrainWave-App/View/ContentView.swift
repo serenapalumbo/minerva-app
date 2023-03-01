@@ -13,8 +13,8 @@ struct ContentView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     @EnvironmentObject var generationViewModel: GenerationViewModel
-    @EnvironmentObject var collectionViewModel: CollectionsViewModel
-
+    @StateObject var collectionViewModel = CollectionsViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {

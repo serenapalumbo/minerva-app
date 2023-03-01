@@ -19,6 +19,7 @@
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
+		04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47FE229AF5B3C0018CC20 /* FolderView.swift */; };
 		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0419DF5429A4D10000149FC7 /* Collections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collections.xcdatamodel; sourceTree = "<group>"; };
 		0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
+		04A47FE229AF5B3C0018CC20 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 				034168B0299F934100A729DC /* ContentView.swift */,
 				0340037929ACECF80094A8D7 /* CollectionView.swift */,
 				D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */,
+				04A47FE229AF5B3C0018CC20 /* FolderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */,
 				0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */,
 				0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */,
 				0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */,
