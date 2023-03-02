@@ -20,6 +20,7 @@
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
+		0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
 		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +152,9 @@
 			dependencies = (
 			);
 			name = "BrainWave-App";
+			packageProductDependencies = (
+				0466AF2929B0F6CF001D5430 /* OpenAIKit */,
+			);
 			productName = "BrainWave-App";
 			productReference = 034168AB299F934100A729DC /* BrainWave-App.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +185,9 @@
 				es,
 			);
 			mainGroup = 034168A2299F934100A729DC;
+			packageReferences = (
+				0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */,
+			);
 			productRefGroup = 034168AC299F934100A729DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dylanshine/openai-kit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0466AF2929B0F6CF001D5430 /* OpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */;
+			productName = OpenAIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */ = {
