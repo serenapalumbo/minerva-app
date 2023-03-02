@@ -13,11 +13,23 @@ struct ContentView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     @EnvironmentObject var generationViewModel: GenerationViewModel
+    var imageVariation = DallEImageGenerator.shared
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
+                    Button ("Ciao") {
+                        Task {
+                            do {
+                                try await imageVariation.createVariations(imageName: "ss")
+                            } catch {
+                                print("ERROR: \(error)")
+                            }
+
+                        }
+
+                    }
                     Spacer(minLength: 50)
                     ButtonCollection()
                     Spacer(minLength: 80)

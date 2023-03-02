@@ -8,10 +8,13 @@
 import Foundation
 
 struct ImageGenerationResponse: Codable {
+
+    let created: Int
+    let data: [ImageResponse]
+
     struct ImageResponse: Codable {
+        let b64_json: Data
         let url: URL
     }
     
-    let created: Int
-    let data: [ImageResponse]
 }
