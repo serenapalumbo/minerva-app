@@ -19,8 +19,8 @@ struct PromptView: View {
                     .foregroundColor(.gray)
                     .padding(.trailing, 15)
             }
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.937, green: 0.937, blue: 0.942), lineWidth: 2))
-            .background(Color(red: 0.937, green: 0.937, blue: 0.942))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("myGray"), lineWidth: 2))
+            .background(Color("myGray"))
             .frame(width: generationViewModel.screenWidth * 0.7, height: generationViewModel.screenHeight * 0.04)
             .cornerRadius(10)
             Spacer()
@@ -32,34 +32,32 @@ struct PromptView: View {
                 generationViewModel.isDownloaded = false
                 if !generationViewModel.isLoading {
                     generationViewModel.isLoading = true
+                    
+                    // initialize as empty the array of generated images
+                    generationViewModel.generatedImages.removeAll()
                     Task {
                         do {
-                            generationViewModel.generatedImages.removeAll()
-                            Task {
-                                do {
-                                    let response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
-                                    print(response!.data.first?.url)
-                                    for url in response!.data.map(\.url) {
-                                        // append each url retrieved from the api to the array of the url of generated images
-                                        generationViewModel.generatedImages.append(String(describing: url))
-                                        
-                                        let (data, _) = try await URLSession.shared.data(from: url)
-                                        collectionViewModel.addNewImage(image: UIImage(data: data)!)
-                                    }
-                                } catch {
-                                    print("ERROR: \(error)")
-                                }
+                            let response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
+                            print(response!.data.first?.url)
+                            for url in response!.data.map(\.url) {
+                                // append each url retrieved from the api to the array of the url of generated images
+                                generationViewModel.generatedImages.append(String(describing: url))
+                                
+                                let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
+                                collectionViewModel.addNewImage(image: UIImage(data: data)!)
                             }
-                            generationViewModel.isDownloaded = true
                         } catch {
-                            print(error.localizedDescription)
+                            print("ERROR: \(error)")
                         }
                     }
+                    
+                    generationViewModel.isDownloaded = true
                 }
-            }.frame(width: generationViewModel.screenWidth*0.12, height: generationViewModel.screenHeight*0.04)
-                .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
-                .foregroundColor(.white)
-                .cornerRadius(10)
+            }
+            .frame(width: generationViewModel.screenWidth * 0.12, height: generationViewModel.screenHeight * 0.04)
+            .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
         .frame(width: generationViewModel.screenWidth * 0.87)
     }
@@ -127,10 +125,10 @@ struct ResultView: View {
                             Button("Variation") {
                                 Task {
                                     do {
-        //                                try await imageVariation.createVariations(imageName: "ss")
+                                        //                                try await imageVariation.createVariations(imageName: "ss")
                                         let imageURL = URL(string: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-zZXwenkqkE989XS1fTRV732A/user-JfcoSEVj9ELPvEw7fphu15PY/img-orL5sRxwdgBVpCVtBFeJhdf1.png?st=2023-03-02T14%3A31%3A54Z&se=2023-03-02T16%3A31%3A54Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-02T05%3A57%3A38Z&ske=2023-03-03T05%3A57%3A38Z&sks=b&skv=2021-08-06&sig=YlMcSqc//Iewf5EmXRiLGGf0duVnx7ACWiYiTIuMdYQ%3D")
                                         let (dataImage, _) = try await URLSession.shared.data(from: imageURL!)
-
+                                        
                                         let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage)
                                         print(response!.data.first?.url)
                                     } catch {
@@ -174,14 +172,14 @@ struct ButtonCollection: View {
     //            return 100
     //        }
     //    }
-
+    
     var body: some View {
         NavigationStack {
             NavigationLink(destination: CollectionView()) {
                 ZStack(alignment: .leading) {
                     Rectangle()
                         .fill(ImagePaint(image: Image("background1")))
-                        .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight*0.1)
+                        .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight * 0.1)
                         .scaledToFit()
                         .cornerRadius(20)
                     Text("My Collection")

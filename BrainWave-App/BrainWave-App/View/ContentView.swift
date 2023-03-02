@@ -13,7 +13,6 @@ struct ContentView: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     @EnvironmentObject var generationViewModel: GenerationViewModel
-    var imageVariation = DallEImageGenerator.shared
 
     @StateObject var collectionViewModel = CollectionsViewModel()
     
