@@ -13,7 +13,6 @@ struct ImageGenerationResponse: Codable {
     let data: [ImageResponse]
 
     struct ImageResponse: Codable {
-        let b64_json: Data
         let url: URL
     }
     

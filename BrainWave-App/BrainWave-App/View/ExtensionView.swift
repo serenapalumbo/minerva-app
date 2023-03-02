@@ -34,12 +34,18 @@ struct PromptView: View {
                     Task {
                         do {
                             generationViewModel.generatedImages.removeAll()
-                            let response = try await DallEImageGenerator.shared.generateImage(withPrompt: generationViewModel.prompt)
-                            for url in response.data.map(\.url) {
-                                // append each url retrieved from the api to the array of the url of generated images
-                                generationViewModel.generatedImages.append(String(describing: url))
+                            Task {
+                                do {
+                                    let response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
+                                    print(response!.data.first?.url)
+                                    for url in response!.data.map(\.url) {
+                                        // append each url retrieved from the api to the array of the url of generated images
+                                        generationViewModel.generatedImages.append(String(describing: url))
+                                    }
+                                } catch {
+                                    print("ERROR: \(error)")
+                                }
                             }
-
                             generationViewModel.isDownloaded = true
                         } catch {
                             print(error.localizedDescription)
@@ -115,8 +121,19 @@ struct ResultView: View {
                             }
                             .frame(width: dimImages, height: dimImages)
                             Button("Variation") {
-                                // TODO: Recall Variation function
-                            }.frame(width: dimImages, height: dimImages)
+                                Task {
+                                    do {
+        //                                try await imageVariation.createVariations(imageName: "ss")
+                                        let imageURL = URL(string: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-zZXwenkqkE989XS1fTRV732A/user-JfcoSEVj9ELPvEw7fphu15PY/img-orL5sRxwdgBVpCVtBFeJhdf1.png?st=2023-03-02T14%3A31%3A54Z&se=2023-03-02T16%3A31%3A54Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-02T05%3A57%3A38Z&ske=2023-03-03T05%3A57%3A38Z&sks=b&skv=2021-08-06&sig=YlMcSqc//Iewf5EmXRiLGGf0duVnx7ACWiYiTIuMdYQ%3D")
+                                        let (dataImage, _) = try await URLSession.shared.data(from: imageURL!)
+
+                                        let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage)
+                                        print(response!.data.first?.url)
+                                    } catch {
+                                        print("ERROR: \(error)")
+                                    }
+                                }
+                            }.frame(width: dimImages, height: 32.93)
                                 .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
                                 .cornerRadius(10)
                                 .bold()
