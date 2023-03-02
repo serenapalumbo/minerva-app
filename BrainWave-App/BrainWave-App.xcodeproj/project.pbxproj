@@ -14,11 +14,13 @@
 		034168B1299F934100A729DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168B0299F934100A729DC /* ContentView.swift */; };
 		034168B3299F934200A729DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B2299F934200A729DC /* Assets.xcassets */; };
 		034168B6299F934200A729DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B5299F934200A729DC /* Preview Assets.xcassets */; };
+		03B2CA8329AFB27B0066A54E /* ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B2CA8229AFB27B0066A54E /* ss.png */; };
 		0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */; };
 		0419DF4F29A4CBA400149FC7 /* ImageGenerationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF4E29A4CBA400149FC7 /* ImageGenerationResponse.swift */; };
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
+    0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
 		04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47FE229AF5B3C0018CC20 /* FolderView.swift */; };
 		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,7 @@
 		034168B2299F934200A729DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		034168B5299F934200A729DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		034168BC299F934200A729DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03B2CA8229AFB27B0066A54E /* ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss.png; sourceTree = "<group>"; };
 		0419DF4C29A4CB8D00149FC7 /* DallEImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DallEImageGenerator.swift; sourceTree = "<group>"; };
 		0419DF4E29A4CBA400149FC7 /* ImageGenerationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerationResponse.swift; sourceTree = "<group>"; };
 		0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +97,7 @@
 		034168AD299F934100A729DC /* BrainWave-App */ = {
 			isa = PBXGroup;
 			children = (
+				03B2CA8229AFB27B0066A54E /* ss.png */,
 				034168AE299F934100A729DC /* BrainWave_AppApp.swift */,
 				0340037829ACEC4A0094A8D7 /* View */,
 				0340037729ACEC3F0094A8D7 /* Service */,
@@ -150,6 +155,9 @@
 			dependencies = (
 			);
 			name = "BrainWave-App";
+			packageProductDependencies = (
+				0466AF2929B0F6CF001D5430 /* OpenAIKit */,
+			);
 			productName = "BrainWave-App";
 			productReference = 034168AB299F934100A729DC /* BrainWave-App.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +188,9 @@
 				es,
 			);
 			mainGroup = 034168A2299F934100A729DC;
+			packageReferences = (
+				0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */,
+			);
 			productRefGroup = 034168AC299F934100A729DC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -197,6 +208,7 @@
 				034168B6299F934200A729DC /* Preview Assets.xcassets in Resources */,
 				0340037029ACC35F0094A8D7 /* Localizable.strings in Resources */,
 				034168B3299F934200A729DC /* Assets.xcassets in Resources */,
+				03B2CA8329AFB27B0066A54E /* ss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +475,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dylanshine/openai-kit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0466AF2929B0F6CF001D5430 /* OpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0466AF2829B0F6CF001D5430 /* XCRemoteSwiftPackageReference "openai-kit" */;
+			productName = OpenAIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */ = {
