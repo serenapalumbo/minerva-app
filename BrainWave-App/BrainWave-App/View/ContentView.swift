@@ -15,6 +15,8 @@ struct ContentView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     var imageVariation = DallEImageGenerator.shared
 
+    @StateObject var collectionViewModel = CollectionsViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -34,6 +36,7 @@ struct ContentView: View {
         .onTapGesture {
             self.dismissKeyboard()
         }
+        .environmentObject(collectionViewModel)
     }
 }
 

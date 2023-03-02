@@ -20,7 +20,8 @@
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
-		0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
+    0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
+		04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47FE229AF5B3C0018CC20 /* FolderView.swift */; };
 		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0419DF5429A4D10000149FC7 /* Collections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collections.xcdatamodel; sourceTree = "<group>"; };
 		0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
+		04A47FE229AF5B3C0018CC20 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				034168B0299F934100A729DC /* ContentView.swift */,
 				0340037929ACECF80094A8D7 /* CollectionView.swift */,
 				D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */,
+				04A47FE229AF5B3C0018CC20 /* FolderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */,
 				0419DF4D29A4CB8D00149FC7 /* DallEImageGenerator.swift in Sources */,
 				0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */,
 				0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */,
@@ -385,21 +389,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainWave-App/Preview Content\"";
-				DEVELOPMENT_TEAM = 46RPY5JJKR;
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Minerva;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Me.BrainWave-App";
+				PRODUCT_BUNDLE_IDENTIFIER = brainwave.Minerva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -416,21 +424,25 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainWave-App/Preview Content\"";
-				DEVELOPMENT_TEAM = 46RPY5JJKR;
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Minerva;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Me.BrainWave-App";
+				PRODUCT_BUNDLE_IDENTIFIER = brainwave.Minerva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

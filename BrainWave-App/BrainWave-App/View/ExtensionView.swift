@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var body: some View {
         HStack {
             HStack {
@@ -41,6 +42,9 @@ struct PromptView: View {
                                     for url in response!.data.map(\.url) {
                                         // append each url retrieved from the api to the array of the url of generated images
                                         generationViewModel.generatedImages.append(String(describing: url))
+                                        
+                                        let (data, _) = try await URLSession.shared.data(from: url)
+                                        collectionViewModel.addNewImage(image: UIImage(data: data)!)
                                     }
                                 } catch {
                                     print("ERROR: \(error)")
@@ -172,20 +176,22 @@ struct ButtonCollection: View {
     //    }
 
     var body: some View {
-        NavigationLink(destination: CollectionView()) {
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(ImagePaint(image: Image("background1")))
-                    .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight*0.1)
-                    .scaledToFit()
-                    .cornerRadius(20)
-                Text("My Collection")
-                    .font(.title)
-                    .font(.system(size: 42.04))
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding([.leading, .top])
-                    .shadow(radius: 5)
+        NavigationStack {
+            NavigationLink(destination: CollectionView()) {
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(ImagePaint(image: Image("background1")))
+                        .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight*0.1)
+                        .scaledToFit()
+                        .cornerRadius(20)
+                    Text("My Collection")
+                        .font(.title)
+                        .font(.system(size: 42.04))
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding([.leading, .top])
+                        .shadow(radius: 5)
+                }
             }
         }
     }
