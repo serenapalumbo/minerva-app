@@ -12,6 +12,7 @@ import UIKit
 
 class GenerationViewModel: ObservableObject {
     @Published var prompt = ""
+    @Published var imagePrompt: Data?
     @Published var generatedImages: [String] = []
     @Published var isLoading = false
     @Published var isDownloaded = false

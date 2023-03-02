@@ -24,8 +24,7 @@ struct PromptView: View {
             .frame(width: generationViewModel.screenWidth * 0.7, height: generationViewModel.screenHeight * 0.04)
             .cornerRadius(10)
             Spacer()
-            Image(systemName: "arrow.up.to.line")
-                .foregroundColor(.gray)
+            PickerView()
             Spacer()
             Button("Generate") {
                 generationViewModel.isLoading = false

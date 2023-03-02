@@ -8,12 +8,10 @@
 import Foundation
 
 struct ImageGenerationResponse: Codable {
-
     let created: Int
     let data: [ImageResponse]
 
     struct ImageResponse: Codable {
         let url: URL
     }
-    
 }
