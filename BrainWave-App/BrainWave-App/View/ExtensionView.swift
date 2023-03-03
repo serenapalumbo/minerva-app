@@ -46,8 +46,9 @@ struct PromptView: View {
                                 let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
                                 collectionViewModel.addNewImage(image: UIImage(data: data)!)
                                 
-                                generationViewModel.isDownloaded = true
                             }
+                            generationViewModel.isDownloaded = true
+
                         } catch {
                             print("ERROR: \(error.localizedDescription)")
                         }
