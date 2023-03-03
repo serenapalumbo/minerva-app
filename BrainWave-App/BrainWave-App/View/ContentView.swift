@@ -9,9 +9,7 @@ import CoreData
 import SwiftUI
 
 struct ContentView: View {
-    func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+    
     @EnvironmentObject var generationViewModel: GenerationViewModel
 
     @StateObject var collectionViewModel = CollectionsViewModel()
@@ -21,7 +19,10 @@ struct ContentView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Spacer(minLength: 50)
-                    ButtonCollection()
+                    NavigationLink(destination: CollectionView())
+                    {
+                        ButtonCollection()
+                    }
                     Spacer(minLength: 80)
                     PromptView()
                     Spacer(minLength: 100)
@@ -31,9 +32,6 @@ struct ContentView: View {
             .padding(.horizontal, 30)
             .navigationTitle("Create")
             .ignoresSafeArea(.keyboard)
-        }
-        .onTapGesture {
-            self.dismissKeyboard()
         }
         .environmentObject(collectionViewModel)
     }

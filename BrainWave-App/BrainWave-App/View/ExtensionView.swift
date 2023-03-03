@@ -150,31 +150,9 @@ struct ResultView: View {
 
 struct ButtonCollection: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
-    //    var dimHeightCollect: CGFloat {
-    //        if generationViewModel.screenWidth > 1200 {
-    //            return 200
-    //        } else {
-    //            return 150
-    //        }
-    //    }
-    //    var dimWidthCollect: CGFloat {
-    //        if generationViewModel.screenWidth > 1200 {
-    //            return 1150
-    //        } else {
-    //            return 1000
-    //        }
-    //    }
-    //    var paddingCollect: CGFloat {
-    //        if generationViewModel.screenWidth > 1200 {
-    //            return 120
-    //        } else {
-    //            return 100
-    //        }
-    //    }
     
     var body: some View {
-        NavigationStack {
-            NavigationLink(destination: CollectionView()) {
+       
                 ZStack(alignment: .leading) {
                     Rectangle()
                         .fill(ImagePaint(image: Image("background1")))
@@ -189,8 +167,8 @@ struct ButtonCollection: View {
                         .padding([.leading, .top])
                         .shadow(radius: 5)
                 }
-            }
-        }
+            
+        
     }
 }
 

@@ -9,8 +9,18 @@ import SwiftUI
 
 struct CollectionView: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    var dimImages: CGFloat {
+        if screenWidth > 1200 {
+            return 300
+        } else {
+            return 256
+        }
+    }
+    
     var body: some View {
-        NavigationStack {
+        
             VStack(alignment: .leading) {
                 ScrollView(.horizontal) {
                     HStack {
@@ -46,27 +56,31 @@ struct CollectionView: View {
                     Text("All")
                         .font(.title)
                         .fontWeight(.bold)
-                    ScrollView(.horizontal) {
+                    ScrollView {
                         if !collectionViewModel.images.isEmpty {
-                            HStack {
-                                ForEach(collectionViewModel.images) { image in
-                                    Image(uiImage: UIImage(data: image.image!)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 300, height: 220)
-                                        .clipped()
+                            ScrollView {
+                                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
+                                    ForEach(collectionViewModel.images) { image in
+                                        Image(uiImage: UIImage(data: image.image!)!)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: dimImages, height: dimImages)
+                                            .clipped()
+                                    }
                                 }
                             }
                         } else {
                             Text("No images generated")
+                                .opacity(0.5)
+                                .padding(.horizontal)
                         }
                     }
                 }
                 .padding(.horizontal)
                 Spacer()
             }
-        }
-        .navigationTitle("My Collection")
+            .navigationTitle("My Collection")
+        
     }
 }
 
