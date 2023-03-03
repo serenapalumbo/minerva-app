@@ -12,6 +12,7 @@ import UIKit
 final class CollectionsViewModel: ObservableObject {
     @Published var images: [ImageEntity] = []
     @Published var folders: [FolderEntity] = []
+    @Published var isAddingFolder = false
     
     init() {
         fetchImages()

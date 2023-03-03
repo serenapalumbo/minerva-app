@@ -24,8 +24,7 @@ struct CollectionView: View {
             ScrollView(.horizontal) {
                 HStack {
                     Button {
-                        // logic of adding folder (ux?)
-                        //                            collectionViewModel.addNewFolder(name: "Name")
+                        collectionViewModel.isAddingFolder = true
                     } label: {
                         VStack(alignment: .leading) {
                             Rectangle()
@@ -79,6 +78,9 @@ struct CollectionView: View {
             Spacer()
         }
         .navigationTitle("My Collection")
+        .sheet(isPresented: $collectionViewModel.isAddingFolder) {
+            AddFolderModal()
+        }
     }
 }
 
