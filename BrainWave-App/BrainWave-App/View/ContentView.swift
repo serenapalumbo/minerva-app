@@ -15,12 +15,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0) {
                     Spacer(minLength: 50)
                     NavigationLink(destination: CollectionView()) {
                         ButtonCollection()
                     }
-                    Spacer(minLength: 50)
+//                    Spacer(minLength: 50)
                     PromptView()
                     Spacer(minLength: 50)
                     ResultView()

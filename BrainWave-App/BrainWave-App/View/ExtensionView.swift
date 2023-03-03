@@ -18,7 +18,7 @@ struct PromptView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
             HStack {
                 HStack {
@@ -207,9 +207,11 @@ struct ButtonCollection: View {
                 .font(.system(size: 42.04))
                 .bold()
                 .foregroundColor(.white)
-                .padding([.leading, .top])
+                .padding(.horizontal)
+//                .padding([.leading, .top])
                 .shadow(radius: 5)
         }
+        .padding(.bottom, 30)
     }
 }
 
