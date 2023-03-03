@@ -38,7 +38,7 @@ struct PickerView: View {
     var body: some View {
         VStack {
             PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
-                Image(systemName: "arrow.up.to.line")
+                Image(systemName: "photo")
                     .foregroundColor(.gray)
             }
             .onChange(of: selectedItem) { newItem in

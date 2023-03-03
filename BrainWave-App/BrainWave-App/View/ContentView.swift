@@ -20,9 +20,9 @@ struct ContentView: View {
                     NavigationLink(destination: CollectionView()) {
                         ButtonCollection()
                     }
-                    Spacer(minLength: 80)
+                    Spacer(minLength: 50)
                     PromptView()
-                    Spacer(minLength: 100)
+                    Spacer(minLength: 50)
                     ResultView()
                 }
             }

@@ -5,60 +5,77 @@
 //  Created by benedetta on 23/02/23.
 //
 
+import OpenAIKit
 import SwiftUI
 
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var body: some View {
-        HStack {
-            HStack {
-                TextField("Write a prompt...", text: $generationViewModel.prompt)
-                    .padding(10)
-                Image(systemName: "mic.fill")
-                    .foregroundColor(.gray)
-                    .padding(.trailing, 15)
+        VStack {
+            if generationViewModel.imagePrompt != nil {
+                Image(uiImage: UIImage(data: generationViewModel.imagePrompt!)!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .padding(.bottom)
             }
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("myGray"), lineWidth: 2))
-            .background(Color("myGray"))
-            .frame(width: generationViewModel.screenWidth * 0.7, height: generationViewModel.screenHeight * 0.04)
-            .cornerRadius(10)
-            Spacer()
-            PickerView()
-            Spacer()
-            Button("Generate") {
-                generationViewModel.isLoading = false
-                generationViewModel.isDownloaded = false
-                if !generationViewModel.isLoading {
-                    generationViewModel.isLoading = true
-                    
-                    // initialize as empty the array of generated images
-                    generationViewModel.generatedImages.removeAll()
-                    Task {
-                        do {
-                            let response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
-                            
-                            for url in response!.data.map(\.url) {
-                                // append each url retrieved from the api to the array of the url of generated images
-                                generationViewModel.generatedImages.append(String(describing: url))
+            HStack {
+                HStack {
+                    TextField("Write a prompt...", text: $generationViewModel.prompt)
+                        .padding(10)
+                    Image(systemName: "mic.fill")
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 15)
+                }
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("myGray"), lineWidth: 2))
+                .background(Color("myGray"))
+                .frame(width: generationViewModel.screenWidth * 0.7, height: generationViewModel.screenHeight * 0.04)
+                .cornerRadius(10)
+                Spacer()
+                PickerView()
+                Spacer()
+                Button("Generate") {
+                    generationViewModel.isLoading = false
+                    generationViewModel.isDownloaded = false
+                    if !generationViewModel.isLoading {
+                        generationViewModel.isLoading = true
+                        
+                        // initialize as empty the array of generated images
+                        generationViewModel.generatedImages.removeAll()
+                        Task {
+                            do {
+                                let response: OpenAIKit.ImageResponse?
                                 
-                                // store in core data
-                                let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-                                collectionViewModel.addNewImage(image: UIImage(data: data)!)
+                                if let image = generationViewModel.imagePrompt {
+                                    response = try await generationViewModel.openAIClient?.images.createVariation(image: image, n: 4)
+                                } else {
+                                    response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
+                                }
+                                                                
+                                for url in response!.data.map(\.url) {
+                                    // append each url retrieved from the api to the array of the url of generated images
+                                    generationViewModel.generatedImages.append(String(describing: url))
+                                    
+                                    // store in core data
+                                    let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
+                                    collectionViewModel.addNewImage(image: UIImage(data: data)!)
+                                }
+                                generationViewModel.isDownloaded = true
+                                generationViewModel.imagePrompt = nil
+                            } catch {
+                                print("ERROR: \(error.localizedDescription)")
                             }
-                            generationViewModel.isDownloaded = true
-                        } catch {
-                            print("ERROR: \(error.localizedDescription)")
                         }
                     }
                 }
+                .frame(width: generationViewModel.screenWidth * 0.12, height: generationViewModel.screenHeight * 0.04)
+                .background(Color.accentColor)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
-            .frame(width: generationViewModel.screenWidth * 0.12, height: generationViewModel.screenHeight * 0.04)
-            .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .frame(width: generationViewModel.screenWidth * 0.87)
         }
-        .frame(width: generationViewModel.screenWidth * 0.87)
     }
 }
 
