@@ -37,20 +37,21 @@ struct PromptView: View {
                     Task {
                         do {
                             let response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
-                            print(response!.data.first?.url)
+                            
                             for url in response!.data.map(\.url) {
                                 // append each url retrieved from the api to the array of the url of generated images
                                 generationViewModel.generatedImages.append(String(describing: url))
                                 
+                                // store in core data
                                 let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
                                 collectionViewModel.addNewImage(image: UIImage(data: data)!)
+                                
+                                generationViewModel.isDownloaded = true
                             }
                         } catch {
-                            print("ERROR: \(error)")
+                            print("ERROR: \(error.localizedDescription)")
                         }
                     }
-                    
-                    generationViewModel.isDownloaded = true
                 }
             }
             .frame(width: generationViewModel.screenWidth * 0.12, height: generationViewModel.screenHeight * 0.04)
@@ -89,17 +90,25 @@ struct ResultView: View {
             HStack {
                 if !generationViewModel.isDownloaded {
                     ForEach(0..<4) {_ in
-                        Rectangle()
-                            .fill(Color("myGray"))
-                            .opacity(0.5)
-                            .frame(width: dimImages, height: dimImages)
-                            .overlay {
-                                if generationViewModel.isLoading {
-                                    VStack {
-                                        ProgressView()
+                        VStack {
+                            Rectangle()
+                                .fill(Color("myGray"))
+                                .opacity(0.5)
+                                .frame(width: dimImages, height: dimImages)
+                                .overlay {
+                                    if generationViewModel.isLoading {
+                                        VStack {
+                                            ProgressView()
+                                        }
                                     }
                                 }
+                            
+                            Button {
+                                //
+                            } label: {
+                                ButtonVariation()
                             }
+                        }
                     }
                     .padding(.trailing, paddingImages)
                 } else {
@@ -121,30 +130,49 @@ struct ResultView: View {
                                     }
                             }
                             .frame(width: dimImages, height: dimImages)
-                            Button("Variation") {
+                            
+                            Button {
                                 Task {
                                     do {
-                                        //                                try await imageVariation.createVariations(imageName: "ss")
-                                        let imageURL = URL(string: "https://oaidalleapiprodscus.blob.core.windows.net/private/org-zZXwenkqkE989XS1fTRV732A/user-JfcoSEVj9ELPvEw7fphu15PY/img-orL5sRxwdgBVpCVtBFeJhdf1.png?st=2023-03-02T14%3A31%3A54Z&se=2023-03-02T16%3A31%3A54Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-02T05%3A57%3A38Z&ske=2023-03-03T05%3A57%3A38Z&sks=b&skv=2021-08-06&sig=YlMcSqc//Iewf5EmXRiLGGf0duVnx7ACWiYiTIuMdYQ%3D")
-                                        let (dataImage, _) = try await URLSession.shared.data(from: imageURL!)
-                                        
+                                        let (dataImage, _) = try await URLSession.shared.data(from: URL(string: item)!)
                                         let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage)
-                                        print(response!.data.first?.url)
+                                        print(response?.data.first?.url)
                                     } catch {
-                                        print("ERROR: \(error)")
+                                        print("ERROR: \(error.localizedDescription)")
                                     }
                                 }
-                            }.frame(width: dimImages, height: 32.93)
-                                .background(Color(red: 0.6901960784313725, green: 0.5803921568627451, blue: 0.8941176470588236))
-                                .cornerRadius(10)
-                                .bold()
-                                .foregroundColor(.white)
+                            } label: {
+                                ButtonVariation()
+                            }
                         }
                     }
                     .padding(.trailing, paddingImages)
                 }
             }
         }
+    }
+}
+
+struct ButtonVariation: View {
+    let screenWidth = UIScreen.main.bounds.width
+    var dimImages: CGFloat {
+        if screenWidth > 1200 {
+            return 300
+        } else {
+            return 256
+        }
+    }
+    var body: some View {
+        Button {
+            // action
+        } label: {
+            Text("Variations")
+        }
+        .frame(width: dimImages, height: 32.93)
+        .background(Color.accentColor)
+        .cornerRadius(10)
+        .bold()
+        .foregroundColor(.white)
     }
 }
 
