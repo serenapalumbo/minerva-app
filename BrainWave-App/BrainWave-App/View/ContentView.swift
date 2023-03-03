@@ -9,9 +9,7 @@ import CoreData
 import SwiftUI
 
 struct ContentView: View {
-    
     @EnvironmentObject var generationViewModel: GenerationViewModel
-
     @StateObject var collectionViewModel = CollectionsViewModel()
     
     var body: some View {
@@ -19,8 +17,7 @@ struct ContentView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Spacer(minLength: 50)
-                    NavigationLink(destination: CollectionView())
-                    {
+                    NavigationLink(destination: CollectionView()) {
                         ButtonCollection()
                     }
                     Spacer(minLength: 80)

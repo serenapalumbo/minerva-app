@@ -45,10 +45,8 @@ struct PromptView: View {
                                 // store in core data
                                 let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
                                 collectionViewModel.addNewImage(image: UIImage(data: data)!)
-                                
                             }
                             generationViewModel.isDownloaded = true
-
                         } catch {
                             print("ERROR: \(error.localizedDescription)")
                         }
@@ -181,23 +179,20 @@ struct ButtonCollection: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     
     var body: some View {
-       
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(ImagePaint(image: Image("background1")))
-                        .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight * 0.1)
-                        .scaledToFit()
-                        .cornerRadius(20)
-                    Text("My Collection")
-                        .font(.title)
-                        .font(.system(size: 42.04))
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding([.leading, .top])
-                        .shadow(radius: 5)
-                }
-            
-        
+        ZStack(alignment: .leading) {
+            Rectangle()
+                .fill(ImagePaint(image: Image("background1")))
+                .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight * 0.1)
+                .scaledToFit()
+                .cornerRadius(20)
+            Text("My Collection")
+                .font(.title)
+                .font(.system(size: 42.04))
+                .bold()
+                .foregroundColor(.white)
+                .padding([.leading, .top])
+                .shadow(radius: 5)
+        }
     }
 }
 
