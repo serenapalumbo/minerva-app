@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FolderView: View {
-    let name: String
+    let folder: FolderEntity
     var body: some View {
         VStack(alignment: .leading) {
             Rectangle()
@@ -16,7 +16,8 @@ struct FolderView: View {
                 .opacity(0.5)
                 .frame(width: 180, height: 150)
                 .cornerRadius(15)
-            Text(name)
+                
+            Text(folder.name!)
         }
     }
 }
@@ -49,8 +50,40 @@ struct AddFolderModal: View {
     }
 }
 
-struct FolderView_Previews: PreviewProvider {
-    static var previews: some View {
-        FolderView(name: "Name")
+struct AddImageToFolderModal: View {
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    let image: ImageEntity
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                Image(uiImage: UIImage(data: image.image!)!)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                
+                ForEach(collectionViewModel.folders) { folder in
+                    Button {
+                        collectionViewModel.addToFolder(image: image, folder: folder)
+                        collectionViewModel.isAddingImageToFolder = false
+                    } label: {
+                        FolderView(folder: folder)
+                    }
+                }
+            }
+            .navigationTitle("Add to Folder")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        collectionViewModel.isAddingImageToFolder = false
+                    }
+                }
+            }
+        }
     }
 }
+
+// struct FolderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FolderView(name: "Name")
+//    }
+// }

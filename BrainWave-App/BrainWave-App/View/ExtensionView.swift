@@ -83,6 +83,7 @@ struct ResultView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     @EnvironmentObject var generationViewModel: GenerationViewModel
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var dimImages: CGFloat {
         if screenWidth > 1200 {
             return 300
@@ -120,7 +121,7 @@ struct ResultView: View {
                                 }
                             
                             Button {
-                                //
+                                // empty
                             } label: {
                                 ButtonVariation()
                             }
@@ -150,8 +151,21 @@ struct ResultView: View {
                             Button {
                                 Task {
                                     do {
-                                        let (dataImage, _) = try await URLSession.shared.data(from: URL(string: item)!)
-                                        let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage)
+                                        let (data, _) = try await URLSession.shared.data(from: URL(string: item)!)
+                                        let dataImage = generationViewModel.cropImageToSquare(image: UIImage(data: data)!)
+                                        let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage, n: 4)
+                                        
+                                        for url in response!.data.map(\.url) {
+                                            // append each url retrieved from the api to the array of the url of generated images
+                                            generationViewModel.generatedImages.append(String(describing: url))
+                                            
+                                            // store in core data
+                                            let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
+                                            collectionViewModel.addNewImage(image: UIImage(data: data)!)
+                                        }
+                                        generationViewModel.isDownloaded = true
+                                        generationViewModel.imagePrompt = nil
+                                        
                                         print(response?.data.first?.url)
                                     } catch {
                                         print("ERROR: \(error.localizedDescription)")
@@ -208,7 +222,6 @@ struct ButtonCollection: View {
                 .bold()
                 .foregroundColor(.white)
                 .padding(.horizontal)
-//                .padding([.leading, .top])
                 .shadow(radius: 5)
         }
         .padding(.bottom, 30)
