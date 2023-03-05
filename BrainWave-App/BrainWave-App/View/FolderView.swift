@@ -9,15 +9,34 @@ import SwiftUI
 
 struct FolderView: View {
     let folder: FolderEntity
+    var images: [ImageEntity] {
+        // convert the NSSet of images connected to a folder to an array of ImageEntity
+        return (folder.images?.allObjects as? [ImageEntity])!
+    }
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Rectangle()
-                .fill(Color("myGray"))
-                .opacity(0.5)
-                .frame(width: 180, height: 150)
-                .cornerRadius(15)
-                
-            Text(folder.name!)
+        NavigationStack {
+            NavigationLink {
+                FolderImagesView(folder: folder)
+            } label: {
+                VStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color("myGray"))
+                        .opacity(0.5)
+                        .overlay {
+                            if let image = images.first {
+                                Image(uiImage: UIImage(data: image.image!)!)
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                        }
+                        .frame(width: 180, height: 150)
+                        .cornerRadius(15)
+                    
+                    Text(folder.name!)
+                }
+            }
+            .foregroundColor(.primary)
         }
     }
 }
@@ -78,6 +97,35 @@ struct AddImageToFolderModal: View {
                     }
                 }
             }
+        }
+    }
+}
+
+struct FolderImagesView: View {
+    let folder: FolderEntity
+    var images: [ImageEntity] {
+        // convert the NSSet of images connected to a folder to an array of ImageEntity
+        return (folder.images?.allObjects as? [ImageEntity])!
+    }
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    var dimImages: CGFloat {
+        if screenWidth > 1200 {
+            return 300
+        } else {
+            return 256
+        }
+    }
+    var body: some View {
+        if !collectionViewModel.images.isEmpty {
+            ScrollView {
+                ImagesGridView(imagesToShow: images)
+            }
+        } else {
+            Text("No images generated")
+                .opacity(0.5)
+                .padding(.horizontal)
         }
     }
 }

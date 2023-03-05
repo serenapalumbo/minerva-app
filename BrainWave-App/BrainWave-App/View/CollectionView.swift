@@ -9,15 +9,6 @@ import SwiftUI
 
 struct CollectionView: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
-    var dimImages: CGFloat {
-        if screenWidth > 1200 {
-            return 300
-        } else {
-            return 256
-        }
-    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -42,7 +33,11 @@ struct CollectionView: View {
                     }
                     if !collectionViewModel.folders.isEmpty {
                         ForEach(collectionViewModel.folders) { folder in
-                            FolderView(folder: folder)
+                            NavigationLink {
+                                FolderImagesView(folder: folder)
+                            } label: {
+                                FolderView(folder: folder)
+                            }
                         }
                     }
                     Spacer()
@@ -57,51 +52,7 @@ struct CollectionView: View {
                 ScrollView {
                     if !collectionViewModel.images.isEmpty {
                         ScrollView {
-                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
-                                ForEach(collectionViewModel.images.reversed()) { image in
-                                    Image(uiImage: UIImage(data: image.image!)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: dimImages, height: dimImages)
-                                        .clipped()
-                                        .contextMenu {
-                                            Button {
-                                                // Core data function to add to new album
-                                                collectionViewModel.isAddingImageToFolder = true
-                                            } label: {
-                                                Image(systemName: "rectangle.stack.badge.plus")
-                                                Text("Add to Album")
-                                            }
-                                            
-                                            Button {
-                                                // Core data function to add to Favorites
-                                            } label: {
-                                                Image(systemName: "heart")
-                                                Text("Favorite")
-                                            }
-                                            
-                                            Button(role: .destructive) {
-                                                // show an alert to ask for confirmation
-                                                collectionViewModel.showingDeleteAlert = true
-                                            } label: {
-                                                Image(systemName: "trash")
-                                                Text("Delete")
-                                            }
-                                        }
-                                        .alert("Are you sure you want to delete this?", isPresented: $collectionViewModel.showingDeleteAlert) {
-                                            Button("Delete", role: .destructive) {
-                                                // the selected image is deleted
-                                                collectionViewModel.deleteImage(image: image)
-                                            }
-                                            Button("Cancel", role: .cancel) { }
-                                        } message: {
-                                            Text("Once deleted, you cannot generate it again.")
-                                        }
-                                        .sheet(isPresented: $collectionViewModel.isAddingImageToFolder) {
-                                            AddImageToFolderModal(image: image)
-                                        }
-                                }
-                            }
+                            ImagesGridView(imagesToShow: collectionViewModel.images.reversed())
                         }
                     } else {
                         Text("No images generated")
@@ -117,9 +68,68 @@ struct CollectionView: View {
         .sheet(isPresented: $collectionViewModel.isAddingFolder) {
             AddFolderModal()
         }
-//        .sheet(isPresented: $collectionViewModel.isAddingImageToFolder) {
-//            AddImageToFolderModal()
-//        }
+    }
+}
+
+struct ImagesGridView: View {
+    @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    var dimImages: CGFloat {
+        if screenWidth > 1200 {
+            return 300
+        } else {
+            return 256
+        }
+    }
+    let imagesToShow: [ImageEntity]
+    
+    var body: some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
+            ForEach(imagesToShow) { image in
+                Image(uiImage: UIImage(data: image.image!)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: dimImages, height: dimImages)
+                    .clipped()
+                    .contextMenu {
+                        Button {
+                            // Core data function to add to new album
+                            collectionViewModel.isAddingImageToFolder = true
+                        } label: {
+                            Image(systemName: "rectangle.stack.badge.plus")
+                            Text("Add to Album")
+                        }
+                        
+                        Button {
+                            // Core data function to add to Favorites
+                        } label: {
+                            Image(systemName: "heart")
+                            Text("Favorite")
+                        }
+                        
+                        Button(role: .destructive) {
+                            // show an alert to ask for confirmation
+                            collectionViewModel.showingDeleteAlert = true
+                        } label: {
+                            Image(systemName: "trash")
+                            Text("Delete")
+                        }
+                    }
+                    .alert("Are you sure you want to delete this?", isPresented: $collectionViewModel.showingDeleteAlert) {
+                        Button("Delete", role: .destructive) {
+                            // the selected image is deleted
+                            collectionViewModel.deleteImage(image: image)
+                        }
+                        Button("Cancel", role: .cancel) { }
+                    } message: {
+                        Text("Once deleted, you cannot generate it again.")
+                    }
+                    .sheet(isPresented: $collectionViewModel.isAddingImageToFolder) {
+                        AddImageToFolderModal(image: image)
+                    }
+            }
+        }
     }
 }
 

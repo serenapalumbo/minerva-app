@@ -37,13 +37,6 @@ struct PromptView: View {
                 PickerView()
                 Spacer()
                 Button("Generate") {
-                    //                    generationViewModel.isLoading = false
-                    //                    generationViewModel.isDownloaded = false
-                    //                    if !generationViewModel.isLoading {
-                    //                        generationViewModel.isLoading = true
-                    //
-                    //                        // initialize as empty the array of generated images
-                    //                        generationViewModel.generatedImages.removeAll()
                     generation.startGeneration(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
                     Task {
                         await generation.generateImages(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
