@@ -20,6 +20,7 @@
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
 		0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
 		04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47FE229AF5B3C0018CC20 /* FolderView.swift */; };
+		04C5E53329B48218007D573D /* ImageGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5E53229B48218007D573D /* ImageGeneration.swift */; };
 		04DA849C29B11B4D00C55A04 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DA849B29B11B4D00C55A04 /* PickerView.swift */; };
 		D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		0419DF5429A4D10000149FC7 /* Collections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collections.xcdatamodel; sourceTree = "<group>"; };
 		0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
 		04A47FE229AF5B3C0018CC20 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		04C5E53229B48218007D573D /* ImageGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGeneration.swift; sourceTree = "<group>"; };
 		04DA849B29B11B4D00C55A04 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		D380EAC429A7E07A005EB3B4 /* ExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 		0419DF5629A4D1B600149FC7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				04C5E53229B48218007D573D /* ImageGeneration.swift */,
 				0340037529ACE7130094A8D7 /* GenerationViewModel.swift */,
 				0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */,
 			);
@@ -230,6 +233,7 @@
 				04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */,
 				0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */,
 				0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */,
+				04C5E53329B48218007D573D /* ImageGeneration.swift in Sources */,
 				0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */,
 				034168B1299F934100A729DC /* ContentView.swift in Sources */,
 				0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */,

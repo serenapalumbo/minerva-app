@@ -11,6 +11,7 @@ import SwiftUI
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    let generation = ImageGeneration()
     var body: some View {
         VStack {
             if generationViewModel.imagePrompt != nil {
@@ -36,37 +37,16 @@ struct PromptView: View {
                 PickerView()
                 Spacer()
                 Button("Generate") {
-                    generationViewModel.isLoading = false
-                    generationViewModel.isDownloaded = false
-                    if !generationViewModel.isLoading {
-                        generationViewModel.isLoading = true
-                        
-                        // initialize as empty the array of generated images
-                        generationViewModel.generatedImages.removeAll()
-                        Task {
-                            do {
-                                let response: OpenAIKit.ImageResponse?
-                                
-                                if let image = generationViewModel.imagePrompt {
-                                    response = try await generationViewModel.openAIClient?.images.createVariation(image: image, n: 4)
-                                } else {
-                                    response = try await generationViewModel.openAIClient?.images.create(prompt: generationViewModel.prompt, n: 4)
-                                }
-                                                                
-                                for url in response!.data.map(\.url) {
-                                    // append each url retrieved from the api to the array of the url of generated images
-                                    generationViewModel.generatedImages.append(String(describing: url))
-                                    
-                                    // store in core data
-                                    let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-                                    collectionViewModel.addNewImage(image: UIImage(data: data)!)
-                                }
-                                generationViewModel.isDownloaded = true
-                                generationViewModel.imagePrompt = nil
-                            } catch {
-                                print("ERROR: \(error.localizedDescription)")
-                            }
-                        }
+                    //                    generationViewModel.isLoading = false
+                    //                    generationViewModel.isDownloaded = false
+                    //                    if !generationViewModel.isLoading {
+                    //                        generationViewModel.isLoading = true
+                    //
+                    //                        // initialize as empty the array of generated images
+                    //                        generationViewModel.generatedImages.removeAll()
+                    generation.startGeneration(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
+                    Task {
+                        await generation.generateImages(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
                     }
                 }
                 .frame(width: generationViewModel.screenWidth * 0.12, height: generationViewModel.screenHeight * 0.04)
@@ -82,6 +62,7 @@ struct PromptView: View {
 struct ResultView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    let generation = ImageGeneration()
     @EnvironmentObject var generationViewModel: GenerationViewModel
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var dimImages: CGFloat {
@@ -149,27 +130,9 @@ struct ResultView: View {
                             .frame(width: dimImages, height: dimImages)
                             
                             Button {
+                                generation.startGeneration(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
                                 Task {
-                                    do {
-                                        let (data, _) = try await URLSession.shared.data(from: URL(string: item)!)
-                                        let dataImage = generationViewModel.cropImageToSquare(image: UIImage(data: data)!)
-                                        let response = try await generationViewModel.openAIClient?.images.createVariation(image: dataImage, n: 4)
-                                        
-                                        for url in response!.data.map(\.url) {
-                                            // append each url retrieved from the api to the array of the url of generated images
-                                            generationViewModel.generatedImages.append(String(describing: url))
-                                            
-                                            // store in core data
-                                            let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-                                            collectionViewModel.addNewImage(image: UIImage(data: data)!)
-                                        }
-                                        generationViewModel.isDownloaded = true
-                                        generationViewModel.imagePrompt = nil
-                                        
-                                        print(response?.data.first?.url)
-                                    } catch {
-                                        print("ERROR: \(error.localizedDescription)")
-                                    }
+                                    await generation.generateVariations(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel, url: item)
                                 }
                             } label: {
                                 ButtonVariation()
