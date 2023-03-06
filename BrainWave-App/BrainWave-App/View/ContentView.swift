@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 0) {
                     Spacer(minLength: 50)
                     NavigationLink(destination: CollectionView()) {
@@ -27,10 +27,11 @@ struct ContentView: View {
                 }
             }
             .padding(.horizontal, 30)
-            .navigationTitle("Create")
+            .navigationTitle(LocalizedStringKey("navtitle1"))
             .ignoresSafeArea(.keyboard)
         }
         .environmentObject(collectionViewModel)
+        .scrollDismissesKeyboard(.immediately)
     }
 }
 

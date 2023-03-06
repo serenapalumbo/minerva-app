@@ -11,6 +11,7 @@ import SwiftUI
 struct PromptView: View {
     @EnvironmentObject var generationViewModel: GenerationViewModel
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    @FocusState private var nameIsFocused: Bool
     let generation = ImageGeneration()
     var body: some View {
         VStack {
@@ -23,8 +24,9 @@ struct PromptView: View {
             }
             HStack {
                 HStack {
-                    TextField("Write a prompt...", text: $generationViewModel.prompt)
+                    TextField(LocalizedStringKey("promptPlaceholder"), text: $generationViewModel.prompt)
                         .padding(10)
+                        .focused($nameIsFocused)
                     Image(systemName: "mic.fill")
                         .foregroundColor(.gray)
                         .padding(.trailing, 15)
@@ -36,8 +38,9 @@ struct PromptView: View {
                 Spacer()
                 PickerView()
                 Spacer()
-                Button("Generate") {
+                Button(LocalizedStringKey("generateButton")) {
                     generation.startGeneration(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
+                    nameIsFocused = false
                     Task {
                         await generation.generateImages(collectionViewModel: collectionViewModel, generationViewModel: generationViewModel)
                     }
@@ -74,7 +77,7 @@ struct ResultView: View {
     }
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Results")
+            Text(LocalizedStringKey("results"))
                 .padding(.top, 20)
                 .font(.system(size: 30))
                 .bold()
@@ -152,7 +155,7 @@ struct ButtonVariation: View {
         Button {
             // action
         } label: {
-            Text("Variations")
+            Text(LocalizedStringKey("variations"))
         }
         .frame(width: dimImages, height: 32.93)
         .background(Color.accentColor)
@@ -172,7 +175,7 @@ struct ButtonCollection: View {
                 .frame(width: generationViewModel.screenWidth * 0.87, height: generationViewModel.screenHeight * 0.1)
                 .scaledToFit()
                 .cornerRadius(20)
-            Text("My Collection")
+            Text(LocalizedStringKey("mycollection"))
                 .font(.title)
                 .font(.system(size: 42.04))
                 .bold()

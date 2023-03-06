@@ -12,7 +12,7 @@ struct CollectionView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     Button {
                         collectionViewModel.isAddingFolder = true
@@ -28,7 +28,7 @@ struct CollectionView: View {
                                         .foregroundColor(Color.accentColor)
                                         .font(.system(size: 70))
                                 }
-                            Text("Add")
+                            Text(LocalizedStringKey("add"))
                         }
                     }
                     if !collectionViewModel.folders.isEmpty {
@@ -46,7 +46,7 @@ struct CollectionView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("All")
+                Text(LocalizedStringKey("all"))
                     .font(.title)
                     .fontWeight(.bold)
                 ScrollView {
@@ -55,7 +55,7 @@ struct CollectionView: View {
                             ImagesGridView(imagesToShow: collectionViewModel.images.reversed())
                         }
                     } else {
-                        Text("No images generated")
+                        Text(LocalizedStringKey("noimagegenerated"))
                             .opacity(0.5)
                             .padding(.horizontal)
                     }
@@ -64,7 +64,7 @@ struct CollectionView: View {
             .padding(.horizontal)
             Spacer()
         }
-        .navigationTitle("My Collection")
+        .navigationTitle(LocalizedStringKey("mycollection"))
         .sheet(isPresented: $collectionViewModel.isAddingFolder) {
             AddFolderModal()
         }
@@ -98,14 +98,14 @@ struct ImagesGridView: View {
                             collectionViewModel.isAddingImageToFolder = true
                         } label: {
                             Image(systemName: "rectangle.stack.badge.plus")
-                            Text("Add to Album")
+                            Text(LocalizedStringKey("addtoalbum"))
                         }
                         
                         Button {
                             // Core data function to add to Favorites
                         } label: {
                             Image(systemName: "heart")
-                            Text("Favorite")
+                            Text(LocalizedStringKey("favourite"))
                         }
                         
                         Button(role: .destructive) {
@@ -113,17 +113,17 @@ struct ImagesGridView: View {
                             collectionViewModel.showingDeleteAlert = true
                         } label: {
                             Image(systemName: "trash")
-                            Text("Delete")
+                            Text(LocalizedStringKey("delete"))
                         }
                     }
-                    .alert("Are you sure you want to delete this?", isPresented: $collectionViewModel.showingDeleteAlert) {
-                        Button("Delete", role: .destructive) {
+                    .alert(LocalizedStringKey("suretodelete"), isPresented: $collectionViewModel.showingDeleteAlert) {
+                        Button(LocalizedStringKey("delete"), role: .destructive) {
                             // the selected image is deleted
                             collectionViewModel.deleteImage(image: image)
                         }
-                        Button("Cancel", role: .cancel) { }
+                        Button(LocalizedStringKey("cancel"), role: .cancel) { }
                     } message: {
-                        Text("Once deleted, you cannot generate it again.")
+                        Text(LocalizedStringKey("oncedeleted"))
                     }
                     .sheet(isPresented: $collectionViewModel.isAddingImageToFolder) {
                         AddImageToFolderModal(image: image)

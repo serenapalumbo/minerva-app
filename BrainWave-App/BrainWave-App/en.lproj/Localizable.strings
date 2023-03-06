@@ -2,6 +2,24 @@
   Localizable.strings
   BrainWave-App
 
-  Created by Marco Dell'Isola on 27/02/23.
+  Created by Marco Dell'Isola on 06/03/23.
   
 */
+
+"navtitle1" = "Create";
+"promptPlaceholder" = "Write a prompt...";
+"generateButton" = "Generate";
+"results" = "Results";
+"variations" = "Variations";
+"mycollection" = "My Collection";
+"add" = "Add";
+"all" = "All";
+"noimagegenerated" = "No images generated";
+"mycollection" = "My Collection";
+"addtoalbum" = "Add to Album";
+"favourite" = "Favourite";
+"delete" = "Delete";
+"suretodelete" = "Are you sure you want to delete this?";
+"cancel" = "Cancel";
+"oncedeleted" = "Once deleted, you cannot generate it again.";
+
