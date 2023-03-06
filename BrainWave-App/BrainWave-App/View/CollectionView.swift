@@ -94,6 +94,7 @@ struct ImagesGridView: View {
                     .clipped()
                     .contextMenu {
                         Button {
+                            collectionViewModel.imageId = image.id
                             // Core data function to add to new album
                             collectionViewModel.isAddingImageToFolder = true
                         } label: {
@@ -102,6 +103,7 @@ struct ImagesGridView: View {
                         }
                         
                         Button {
+                            collectionViewModel.imageId = image.id
                             // Core data function to add to Favorites
                         } label: {
                             Image(systemName: "heart")
@@ -109,6 +111,7 @@ struct ImagesGridView: View {
                         }
                         
                         Button(role: .destructive) {
+                            collectionViewModel.imageId = image.id
                             // show an alert to ask for confirmation
                             collectionViewModel.showingDeleteAlert = true
                         } label: {
@@ -119,14 +122,14 @@ struct ImagesGridView: View {
                     .alert(LocalizedStringKey("suretodelete"), isPresented: $collectionViewModel.showingDeleteAlert) {
                         Button(LocalizedStringKey("delete"), role: .destructive) {
                             // the selected image is deleted
-                            collectionViewModel.deleteImage(image: image)
+                            collectionViewModel.deleteImage(id: collectionViewModel.imageId!)
                         }
                         Button(LocalizedStringKey("cancel"), role: .cancel) { }
                     } message: {
                         Text(LocalizedStringKey("oncedeleted"))
                     }
                     .sheet(isPresented: $collectionViewModel.isAddingImageToFolder) {
-                        AddImageToFolderModal(image: image)
+                        AddImageToFolderModal(imageId: collectionViewModel.imageId!)
                     }
             }
         }

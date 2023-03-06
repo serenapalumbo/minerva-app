@@ -15,6 +15,7 @@ final class CollectionsViewModel: ObservableObject {
     @Published var isAddingFolder = false
     @Published var showingDeleteAlert = false
     @Published var isAddingImageToFolder = false
+    @Published var imageId: UUID?
     
     init() {
         fetchImages()
@@ -48,8 +49,13 @@ final class CollectionsViewModel: ObservableObject {
         saveChanges()
     }
     
-    func deleteImage(image: ImageEntity) {
-        PersistenceManager.shared.container.viewContext.delete(image)
+//    func deleteImage(image: ImageEntity) {
+//        PersistenceManager.shared.container.viewContext.delete(image)
+//        saveChanges()
+//    }
+    
+    func deleteImage(id: UUID) {
+        PersistenceManager.shared.container.viewContext.delete(images.first(where: { $0.id == id })!)
         saveChanges()
     }
     

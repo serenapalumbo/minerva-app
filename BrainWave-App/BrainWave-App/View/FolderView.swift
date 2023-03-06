@@ -13,6 +13,7 @@ struct FolderView: View {
         // convert the NSSet of images connected to a folder to an array of ImageEntity
         return (folder.images?.allObjects as? [ImageEntity])!
     }
+    @State var coverData: Data?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,8 +21,8 @@ struct FolderView: View {
                 .fill(Color("myGray"))
                 .opacity(0.5)
                 .overlay {
-                    if let image = images.first {
-                        Image(uiImage: UIImage(data: image.image!)!)
+                    if coverData != nil {
+                        Image(uiImage: UIImage(data: coverData!)!)
                             .resizable()
                             .scaledToFill()
                     }
@@ -32,6 +33,11 @@ struct FolderView: View {
             Text(folder.name!)
         }
         .foregroundColor(.primary)
+        .onAppear {
+            if let image = images.first {
+                coverData = image.image
+            }
+        }
     }
 }
 
@@ -65,7 +71,10 @@ struct AddFolderModal: View {
 
 struct AddImageToFolderModal: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
-    let image: ImageEntity
+    let imageId: UUID
+    var image: ImageEntity {
+        return collectionViewModel.images.first(where: { $0.id == imageId })!
+    }
     
     var body: some View {
         NavigationStack {
