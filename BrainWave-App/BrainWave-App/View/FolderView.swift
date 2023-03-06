@@ -15,29 +15,23 @@ struct FolderView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            NavigationLink {
-                FolderImagesView(folder: folder)
-            } label: {
-                VStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color("myGray"))
-                        .opacity(0.5)
-                        .overlay {
-                            if let image = images.first {
-                                Image(uiImage: UIImage(data: image.image!)!)
-                                    .resizable()
-                                    .scaledToFill()
-                            }
-                        }
-                        .frame(width: 180, height: 150)
-                        .cornerRadius(15)
-                    
-                    Text(folder.name!)
+        VStack(alignment: .leading) {
+            Rectangle()
+                .fill(Color("myGray"))
+                .opacity(0.5)
+                .overlay {
+                    if let image = images.first {
+                        Image(uiImage: UIImage(data: image.image!)!)
+                            .resizable()
+                            .scaledToFill()
+                    }
                 }
-            }
-            .foregroundColor(.primary)
+                .frame(width: 180, height: 150)
+                .cornerRadius(15)
+            
+            Text(folder.name!)
         }
+        .foregroundColor(.primary)
     }
 }
 
