@@ -41,34 +41,6 @@ struct FolderView: View {
     }
 }
 
-struct AddFolderModal: View {
-    @State private var folderName: String = ""
-    @EnvironmentObject var collectionViewModel: CollectionsViewModel
-    
-    var body: some View {
-        NavigationStack {
-            VStack {
-                TextField("Folder Name", text: $folderName)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal)
-                Button("Add Folder") {
-                    collectionViewModel.addNewFolder(name: folderName.isEmpty ? "New Folder" : folderName)
-                    collectionViewModel.isAddingFolder = false
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .padding(.horizontal)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        collectionViewModel.isAddingFolder = false
-                    }
-                }
-            }
-        }
-    }
-}
-
 struct AddImageToFolderModal: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
     let imageId: UUID

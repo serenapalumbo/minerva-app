@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CollectionView: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
+    @State private var folderName: String = ""
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -65,8 +66,14 @@ struct CollectionView: View {
             Spacer()
         }
         .navigationTitle(LocalizedStringKey("mycollection"))
-        .sheet(isPresented: $collectionViewModel.isAddingFolder) {
-            AddFolderModal()
+        .alert("New Folder", isPresented: $collectionViewModel.isAddingFolder) {
+            TextField("Folder Name", text: $folderName)
+            Button(LocalizedStringKey("cancel"), role: .cancel) { }
+            Button(LocalizedStringKey("add")) {
+                collectionViewModel.addNewFolder(name: folderName)
+            }
+        } message: {
+            Text("Enter a name for this folder")
         }
     }
 }
