@@ -116,6 +116,16 @@ struct ImagesGridView: View {
                             Image(systemName: "heart")
                             Text(LocalizedStringKey("favourite"))
                         }
+
+                        Button {
+                            collectionViewModel.imageId = image.id
+                            guard let inputImage = UIImage(data: image.image!) else { return }
+                            let imageSaver = ImageSaver()
+                            imageSaver.writeToPhotoAlbum(image: inputImage)
+                        } label:{
+                            Image(systemName: "square.and.arrow.down")
+                            Text(LocalizedStringKey("save"))
+                        }
                         
                         Button(role: .destructive) {
                             collectionViewModel.imageId = image.id

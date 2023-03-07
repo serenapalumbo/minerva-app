@@ -388,8 +388,11 @@
 				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BrainWave-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Minerva;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "To upload an image that the user needs to variate";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to save the genereted photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -423,8 +426,11 @@
 				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BrainWave-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Minerva;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "To upload an image that the user needs to variate";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to save the genereted photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
