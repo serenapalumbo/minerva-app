@@ -98,7 +98,7 @@ struct FolderImagesView: View {
                 ImagesGridView(imagesToShow: images)
             }
         } else {
-            Text("No images generated")
+            Text(LocalizedStringKey("noimagegenerated"))
                 .opacity(0.5)
                 .padding(.horizontal)
         }
