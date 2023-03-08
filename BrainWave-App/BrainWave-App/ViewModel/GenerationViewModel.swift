@@ -8,6 +8,7 @@
 import AsyncHTTPClient
 import Foundation
 import OpenAIKit
+import SpriteKit
 import UIKit
 
 class GenerationViewModel: ObservableObject {
