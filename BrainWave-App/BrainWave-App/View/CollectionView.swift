@@ -33,7 +33,7 @@ struct CollectionView: View {
                         }
                     }
                     if !collectionViewModel.folders.isEmpty {
-                        ForEach(collectionViewModel.folders) { folder in
+                        ForEach(collectionViewModel.folders.reversed()) { folder in
                             NavigationLink {
                                 FolderImagesView(folder: folder)
                             } label: {
