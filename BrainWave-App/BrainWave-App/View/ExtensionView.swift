@@ -92,9 +92,9 @@ struct ResultView: View {
                                 .overlay {
                                     if generationViewModel.isLoading {
                                         VStack {
-//                                            ProgressView()
-                                            LoadingView()
-                                                .frame(width: dimImages, height: dimImages)
+                                            ProgressView()
+//                                            LoadingView()
+//                                                .frame(width: dimImages, height: dimImages)
                                         }
                                     }
                                 }
