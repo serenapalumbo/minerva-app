@@ -25,6 +25,10 @@ struct FolderView: View {
                         Image(uiImage: UIImage(data: coverData!)!)
                             .resizable()
                             .scaledToFill()
+                    } else {
+                        Image(systemName: "photo.on.rectangle")
+                            .foregroundColor(.secondary)
+                            .font(.system(size: 70))
                     }
                 }
                 .frame(width: 180, height: 150)
@@ -43,7 +47,7 @@ struct FolderView: View {
 
 struct AddImageToFolderModal: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
-    var folderPerRow = 3
+//    var folderPerRow = 3
     let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     let imageId: UUID
     var image: ImageEntity {

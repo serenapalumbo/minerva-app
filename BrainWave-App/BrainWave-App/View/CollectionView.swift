@@ -39,6 +39,16 @@ struct CollectionView: View {
                             } label: {
                                 FolderView(folder: folder)
                             }
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    collectionViewModel.folderId = folder.id
+                                    // show an alert to ask for confirmation
+                                    collectionViewModel.showingDeleteFolderAlert = true
+                                } label: {
+                                    Image(systemName: "trash")
+                                    Text(LocalizedStringKey("delete"))
+                                }
+                            }
                         }
                     }
                     Spacer()
@@ -74,6 +84,13 @@ struct CollectionView: View {
             }
         } message: {
             Text(LocalizedStringKey("enterfoldername"))
+        }
+        .alert(Text(LocalizedStringKey("suretodelete")), isPresented: $collectionViewModel.showingDeleteFolderAlert) {
+            Button(LocalizedStringKey("delete"), role: .destructive) {
+                // the selected folder is deleted
+                collectionViewModel.deleteFolder(id: collectionViewModel.folderId!)
+            }
+            Button(LocalizedStringKey("cancel"), role: .cancel) { }
         }
     }
 }

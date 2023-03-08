@@ -14,8 +14,10 @@ final class CollectionsViewModel: ObservableObject {
     @Published var folders: [FolderEntity] = []
     @Published var isAddingFolder = false
     @Published var showingDeleteAlert = false
+    @Published var showingDeleteFolderAlert = false
     @Published var isAddingImageToFolder = false
     @Published var imageId: UUID?
+    @Published var folderId: UUID?
     
     init() {
         fetchImages()
@@ -72,10 +74,15 @@ final class CollectionsViewModel: ObservableObject {
         saveChanges()
     }
     
-    func deleteFolder(folder: FolderEntity) {
-        PersistenceManager.shared.container.viewContext.delete(folder)
+    func deleteFolder(id: UUID) {
+        PersistenceManager.shared.container.viewContext.delete(folders.first(where: { $0.id == id })!)
         saveChanges()
     }
+    
+//    func deleteFolder(folder: FolderEntity) {
+//        PersistenceManager.shared.container.viewContext.delete(folder)
+//        saveChanges()
+//    }
     
     func saveChanges() {
         PersistenceManager.shared.saveContext { error in
