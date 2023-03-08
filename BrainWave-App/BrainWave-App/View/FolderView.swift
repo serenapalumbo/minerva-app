@@ -44,6 +44,7 @@ struct FolderView: View {
 struct AddImageToFolderModal: View {
     @EnvironmentObject var collectionViewModel: CollectionsViewModel
     var folderPerRow = 3
+    let columns: [GridItem] = [GridItem(), GridItem(), GridItem()]
     let imageId: UUID
     var image: ImageEntity {
         return collectionViewModel.images.first(where: { $0.id == imageId })!
@@ -71,29 +72,45 @@ struct AddImageToFolderModal: View {
                 }.padding(.bottom, 40)
                 Text(LocalizedStringKey("myfolders"))
                     .font(.system(size: 30).bold())
+                
                 if !collectionViewModel.folders.isEmpty {
-                    ScrollView(showsIndicators: false) {
-                        VStack(alignment: .leading) {
-                            ForEach(0..<collectionViewModel.folders.count/folderPerRow + 1) { rowIndex in
-                                HStack {
-                                    folderRow(for: rowIndex)
-                                }
+                    LazyVGrid(columns: columns) {
+                        ForEach(collectionViewModel.folders) { folder in
+                            Button {
+                                collectionViewModel.addToFolder(image: image, folder: folder)
+                                collectionViewModel.isAddingImageToFolder = false
+                            } label: {
+                                FolderView(folder: folder)
                             }
                         }
                     }
                 }
+                Spacer()
+                
+//                if !collectionViewModel.folders.isEmpty {
+//                    ScrollView(showsIndicators: false) {
+//                        VStack(alignment: .leading) {
+//                            ForEach(0..<collectionViewModel.folders.count/folderPerRow + 1) { rowIndex in
+//                                HStack {
+//                                    folderRow(for: rowIndex)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Cancel") {
-                    collectionViewModel.isAddingImageToFolder = false
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Cancel") {
+                        collectionViewModel.isAddingImageToFolder = false
+                    }
+                    .padding(.top, 20)
                 }
-                .padding(.top, 20)
-            }
-            ToolbarItem(placement: .principal) {
-                Text("Add to Folder")
-                    .font(.system(size: 20).bold())
+                ToolbarItem(placement: .principal) {
+                    Text("Add to Folder")
+                        .font(.system(size: 20).bold())
+                }
             }
         }
     }
@@ -107,17 +124,17 @@ struct AddImageToFolderModal: View {
         }
     }
 
-    func folderRow(for rowIndex: Int) -> some View {
-        let startIndex = rowIndex * folderPerRow
-        let endIndex = min(startIndex + folderPerRow, collectionViewModel.folders.count)
-        let folderIndices = startIndex..<endIndex
-
-        return HStack {
-            ForEach(folderIndices) { folderIndex in
-                folderButton(for: folderIndex)
-            }
-        }
-    }
+//    func folderRow(for rowIndex: Int) -> some View {
+//        let startIndex = rowIndex * folderPerRow
+//        let endIndex = min(startIndex + folderPerRow, collectionViewModel.folders.count)
+//        let folderIndices = startIndex..<endIndex
+//
+//        return HStack {
+//            ForEach(folderIndices) { folderIndex in
+//                folderButton(for: folderIndex)
+//            }
+//        }
+//    }
 }
 
 struct FolderImagesView: View {
