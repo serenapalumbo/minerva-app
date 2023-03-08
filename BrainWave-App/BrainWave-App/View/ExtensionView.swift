@@ -94,7 +94,7 @@ struct ResultView: View {
                                         VStack {
 //                                            ProgressView()
                                             LoadingView()
-                                                .frame(width: 50, height: 50)
+                                                .frame(width: dimImages, height: dimImages)
                                         }
                                     }
                                 }

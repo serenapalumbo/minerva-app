@@ -22,3 +22,7 @@
 "cancel" = "Cancelar";
 "oncedeleted" = "Uma vez apagado, não se pode voltar a gerá-lo.";
 "save" = "Excepto";
+"newfolder" = "Nova Pasta";
+"foldername" = "Nome da pasta";
+"enterfoldername" = "Introduza um nome para esta pasta";
+"myfolders" = "As Minhas Pastas";

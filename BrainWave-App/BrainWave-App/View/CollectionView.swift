@@ -66,14 +66,14 @@ struct CollectionView: View {
             Spacer()
         }
         .navigationTitle(LocalizedStringKey("mycollection"))
-        .alert("New Folder", isPresented: $collectionViewModel.isAddingFolder) {
-            TextField("Folder Name", text: $folderName)
+        .alert(LocalizedStringKey("newfolder"), isPresented: $collectionViewModel.isAddingFolder) {
+            TextField(LocalizedStringKey("foldername"), text: $folderName)
             Button(LocalizedStringKey("cancel"), role: .cancel) { }
             Button(LocalizedStringKey("add")) {
                 collectionViewModel.addNewFolder(name: folderName)
             }
         } message: {
-            Text("Enter a name for this folder")
+            Text(LocalizedStringKey("enterfoldername"))
         }
     }
 }
@@ -122,7 +122,7 @@ struct ImagesGridView: View {
                             guard let inputImage = UIImage(data: image.image!) else { return }
                             let imageSaver = ImageSaver()
                             imageSaver.writeToPhotoAlbum(image: inputImage)
-                        } label:{
+                        } label: {
                             Image(systemName: "square.and.arrow.down")
                             Text(LocalizedStringKey("save"))
                         }

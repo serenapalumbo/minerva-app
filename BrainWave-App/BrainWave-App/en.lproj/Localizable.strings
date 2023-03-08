@@ -23,4 +23,8 @@
 "cancel" = "Cancel";
 "oncedeleted" = "Once deleted, you cannot generate it again.";
 "save" = "Save";
+"newfolder" = "New Folder";
+"foldername" = "Folder Name";
+"enterfoldername" = "Enter a name for this folder";
+"myfolders" = "My Folders";
 

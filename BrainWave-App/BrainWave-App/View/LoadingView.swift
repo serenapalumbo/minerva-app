@@ -9,20 +9,21 @@ import SwiftUI
 import SpriteKit
 
 class LoadingScene: SKScene {
-//    var loader: SKSpriteNode = SKSpriteNode(imageNamed: "Loading1.png")
+    var loader: SKSpriteNode = SKSpriteNode(imageNamed: "Loading1.png")
     override func didMove(to view: SKView) {
-//        var TextureArray = [SKTexture]()
-//        for i in 1...40{
-//
-//            var imageFileName = String(format: "Loading.gif")
-//            TextureArray.append(SKTexture(imageNamed: imageFileName))
-//
-//        }
-//        var loading = SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.3))
-//        loader.run(loading)
-        let texture = SKTexture(imageNamed: "Loading.gif")
-        let sprite = SKSpriteNode(texture: texture)
-        addChild(sprite)
+        loader.size = CGSize(width: 0.3, height: 0.3)
+        loader.position = CGPoint(x: 0.5, y: 0.46)
+        var TextureArray = [SKTexture]()
+        for i in 0...120{
+
+            var imageFileName = String(format: "Loading-\(i).png", i)
+            TextureArray.append(SKTexture(imageNamed: imageFileName))
+
+        }
+        var loading = SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.01))
+        loader.run(loading)
+        addChild(loader)
+
     }
 }
 

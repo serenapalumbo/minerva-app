@@ -22,3 +22,7 @@
 "cancel" = "Cancella";
 "oncedeleted" = "Una volta eliminato, non potrai generarlo di nuovo.";
 "save" = "Salva";
+"newfolder" = "Nuova Cartella";
+"foldername" = "Nome Cartella";
+"enterfoldername" = "Inserisci un nome per questa cartella";
+"myfolders" = "Le mie cartelle";

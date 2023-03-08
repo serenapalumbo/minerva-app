@@ -50,26 +50,51 @@ struct AddImageToFolderModal: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(uiImage: UIImage(data: image.image!)!)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                
-                ForEach(collectionViewModel.folders) { folder in
-                    Button {
-                        collectionViewModel.addToFolder(image: image, folder: folder)
-                        collectionViewModel.isAddingImageToFolder = false
-                    } label: {
-                        FolderView(folder: folder)
+            VStack(alignment: .leading) {
+                Button {
+                    collectionViewModel.isAddingFolder = true
+                } label: {
+                    VStack(alignment: .leading) {
+                        Rectangle()
+                            .fill(Color("myGray"))
+                            .opacity(0.5)
+                            .frame(width: 180, height: 150)
+                            .cornerRadius(15)
+                            .overlay {
+                                Image(systemName: "plus")
+                                    .foregroundColor(Color.accentColor)
+                                    .font(.system(size: 70))
+                            }
+                        Text(LocalizedStringKey("add"))
+                    }
+                }.padding(.bottom, 40)
+                Text(LocalizedStringKey("myfolders"))
+                    .font(.system(size: 30).bold())
+                HStack {
+                    ScrollView(showsIndicators: false) {
+                        if !collectionViewModel.folders.isEmpty {
+                            ForEach(collectionViewModel.folders) { folder in
+                                Button {
+                                    collectionViewModel.addToFolder(image: image, folder: folder)
+                                    collectionViewModel.isAddingImageToFolder = false
+                                } label: {
+                                    FolderView(folder: folder)
+                                }
+                            }
+                        }
                     }
                 }
             }
-            .navigationTitle("Add to Folder")
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Cancel") {
                         collectionViewModel.isAddingImageToFolder = false
                     }
+                    .padding(.top, 20)
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Add to Folder")
+                        .font(.system(size: 20).bold())
                 }
             }
         }
