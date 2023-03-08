@@ -22,4 +22,5 @@
 "suretodelete" = "Are you sure you want to delete this?";
 "cancel" = "Cancel";
 "oncedeleted" = "Once deleted, you cannot generate it again.";
+"save" = "Save";
 
