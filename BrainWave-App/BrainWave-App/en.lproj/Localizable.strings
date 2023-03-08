@@ -16,7 +16,7 @@
 "all" = "All";
 "noimagegenerated" = "No images generated";
 "mycollection" = "My Collection";
-"addtoalbum" = "Add to Album";
+"addtofolder" = "Add to Folder";
 "favourite" = "Favourite";
 "delete" = "Delete";
 "suretodelete" = "Are you sure you want to delete this?";

@@ -15,7 +15,7 @@
 "add" = "Acrescentar";
 "all" = "Todos";
 "noimagegenerated" = "Nenhuma imagem gerada";
-"addtoalbum" = "Adicionar ao Álbum";
+"addtofolder" = "Adicionar ao Álbum";
 "favourite" = "Favorito";
 "delete" = "Eliminar";
 "suretodelete" = "Tem a certeza de que quer apagar isto?";

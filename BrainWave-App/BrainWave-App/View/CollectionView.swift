@@ -102,20 +102,20 @@ struct ImagesGridView: View {
                     .contextMenu {
                         Button {
                             collectionViewModel.imageId = image.id
-                            // Core data function to add to new album
+                            // Core data function to add to new folder
                             collectionViewModel.isAddingImageToFolder = true
                         } label: {
                             Image(systemName: "rectangle.stack.badge.plus")
-                            Text(LocalizedStringKey("addtoalbum"))
+                            Text(LocalizedStringKey("addtofolder"))
                         }
                         
-                        Button {
-                            collectionViewModel.imageId = image.id
-                            // Core data function to add to Favorites
-                        } label: {
-                            Image(systemName: "heart")
-                            Text(LocalizedStringKey("favourite"))
-                        }
+//                        Button {
+//                            collectionViewModel.imageId = image.id
+//                            // Core data function to add to Favorites
+//                        } label: {
+//                            Image(systemName: "heart")
+//                            Text(LocalizedStringKey("favourite"))
+//                        }
 
                         Button {
                             collectionViewModel.imageId = image.id
