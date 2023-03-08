@@ -53,6 +53,7 @@ struct AddImageToFolderModal: View {
     var image: ImageEntity {
         return collectionViewModel.images.first(where: { $0.id == imageId })!
     }
+    @State private var folderName: String = ""
     
     var body: some View {
         NavigationStack {
@@ -116,6 +117,15 @@ struct AddImageToFolderModal: View {
                         .font(.system(size: 20).bold())
                 }
             }
+        }
+        .alert(LocalizedStringKey("newfolder"), isPresented: $collectionViewModel.isAddingFolder) {
+            TextField(LocalizedStringKey("foldername"), text: $folderName)
+            Button(LocalizedStringKey("cancel"), role: .cancel) { }
+            Button(LocalizedStringKey("add")) {
+                collectionViewModel.addNewFolder(name: folderName)
+            }
+        } message: {
+            Text(LocalizedStringKey("enterfoldername"))
         }
     }
 
