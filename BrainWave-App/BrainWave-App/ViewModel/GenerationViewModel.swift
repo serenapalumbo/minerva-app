@@ -24,7 +24,7 @@ class GenerationViewModel: ObservableObject {
     
     init() {
         let httpClient = HTTPClient(eventLoopGroupProvider: .createNew)
-        let configuration = Configuration(apiKey: "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", organization: "org-zZXwenkqkE989XS1fTRV732A") // APIKEY and OrganizationID
+        let configuration = Configuration(apiKey: /*"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"*/"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", organization: /*"org-zZXwenkqkE989XS1fTRV732A"*/ "org-tAaBxPfIjazzOKHcIQK6DQBS") // APIKEY and OrganizationID
 
         openAIClient = OpenAIKit.Client(httpClient: httpClient, configuration: configuration)
     }
