@@ -140,6 +140,7 @@
 		0419DF5129A4CFB600149FC7 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */; };
 		0419DF5529A4D10000149FC7 /* Collections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5329A4D10000149FC7 /* Collections.xcdatamodeld */; };
 		0419DF5829A4D35900149FC7 /* CollectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */; };
+		04256DE12A2137D6008BDE56 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256DE02A2137D6008BDE56 /* Keys.swift */; };
 		0466AF2A29B0F6CF001D5430 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0466AF2929B0F6CF001D5430 /* OpenAIKit */; };
 		04A47FE329AF5B3C0018CC20 /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A47FE229AF5B3C0018CC20 /* FolderView.swift */; };
 		04C5E53329B48218007D573D /* ImageGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C5E53229B48218007D573D /* ImageGeneration.swift */; };
@@ -285,6 +286,7 @@
 		0419DF5029A4CFB600149FC7 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		0419DF5429A4D10000149FC7 /* Collections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collections.xcdatamodel; sourceTree = "<group>"; };
 		0419DF5729A4D35900149FC7 /* CollectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewModel.swift; sourceTree = "<group>"; };
+		04256DE02A2137D6008BDE56 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		04A47FE229AF5B3C0018CC20 /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		04C5E53229B48218007D573D /* ImageGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGeneration.swift; sourceTree = "<group>"; };
 		04DA849B29B11B4D00C55A04 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				034168AE299F934100A729DC /* BrainWave_AppApp.swift */,
+				04256DE02A2137D6008BDE56 /* Keys.swift */,
 				0340037829ACEC4A0094A8D7 /* View */,
 				0362C0EA29B8F2390079A71C /* LoadingImages */,
 				0419DF5229A4CFC000149FC7 /* Models */,
@@ -736,6 +739,7 @@
 				04DA849C29B11B4D00C55A04 /* PickerView.swift in Sources */,
 				D380EAC529A7E07A005EB3B4 /* ExtensionView.swift in Sources */,
 				0340037A29ACECF80094A8D7 /* CollectionView.swift in Sources */,
+				04256DE12A2137D6008BDE56 /* Keys.swift in Sources */,
 				0362C09329B8A3C70079A71C /* LoadingView.swift in Sources */,
 				034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */,
 			);
@@ -879,9 +883,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainWave-App/Preview Content\"";
-				DEVELOPMENT_TEAM = 78L5ZLXN57;
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BrainWave-App/Info.plist";
@@ -899,7 +903,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = brainwave.Minerva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -917,9 +921,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"BrainWave-App/Preview Content\"";
-				DEVELOPMENT_TEAM = 78L5ZLXN57;
+				DEVELOPMENT_TEAM = 5849ZUY2X9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BrainWave-App/Info.plist";
@@ -937,7 +941,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = brainwave.Minerva;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
