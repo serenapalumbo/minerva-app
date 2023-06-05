@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct BrainWave_AppApp: App {
+struct Minerva_AppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(GenerationViewModel())

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0340037629ACE7130094A8D7 /* GenerationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340037529ACE7130094A8D7 /* GenerationViewModel.swift */; };
 		0340037A29ACECF80094A8D7 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340037929ACECF80094A8D7 /* CollectionView.swift */; };
-		034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168AE299F934100A729DC /* BrainWave_AppApp.swift */; };
+		034168AF299F934100A729DC /* Minerva_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168AE299F934100A729DC /* Minerva_AppApp.swift */; };
 		034168B1299F934100A729DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034168B0299F934100A729DC /* ContentView.swift */; };
 		034168B3299F934200A729DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B2299F934200A729DC /* Assets.xcassets */; };
 		034168B6299F934200A729DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034168B5299F934200A729DC /* Preview Assets.xcassets */; };
@@ -151,8 +151,8 @@
 /* Begin PBXFileReference section */
 		0340037529ACE7130094A8D7 /* GenerationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationViewModel.swift; sourceTree = "<group>"; };
 		0340037929ACECF80094A8D7 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
-		034168AB299F934100A729DC /* BrainWave-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BrainWave-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		034168AE299F934100A729DC /* BrainWave_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainWave_AppApp.swift; sourceTree = "<group>"; };
+		034168AB299F934100A729DC /* Minerva-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Minerva-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		034168AE299F934100A729DC /* Minerva_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minerva_AppApp.swift; sourceTree = "<group>"; };
 		034168B0299F934100A729DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		034168B2299F934200A729DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		034168B5299F934200A729DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 		034168A2299F934100A729DC = {
 			isa = PBXGroup;
 			children = (
-				034168AD299F934100A729DC /* BrainWave-App */,
+				034168AD299F934100A729DC /* Minerva-App */,
 				034168AC299F934100A729DC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -329,15 +329,15 @@
 		034168AC299F934100A729DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				034168AB299F934100A729DC /* BrainWave-App.app */,
+				034168AB299F934100A729DC /* Minerva-App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		034168AD299F934100A729DC /* BrainWave-App */ = {
+		034168AD299F934100A729DC /* Minerva-App */ = {
 			isa = PBXGroup;
 			children = (
-				034168AE299F934100A729DC /* BrainWave_AppApp.swift */,
+				034168AE299F934100A729DC /* Minerva_AppApp.swift */,
 				04256DE02A2137D6008BDE56 /* Keys.swift */,
 				0340037829ACEC4A0094A8D7 /* View */,
 				0362C0EA29B8F2390079A71C /* LoadingImages */,
@@ -348,7 +348,7 @@
 				034168B4299F934200A729DC /* Preview Content */,
 				039CD47729B5EBD800CFDDB9 /* Localizable.strings */,
 			);
-			path = "BrainWave-App";
+			path = "Minerva-App";
 			sourceTree = "<group>";
 		};
 		034168B4299F934200A729DC /* Preview Content */ = {
@@ -510,9 +510,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		034168AA299F934100A729DC /* BrainWave-App */ = {
+		034168AA299F934100A729DC /* Minerva-App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 034168BF299F934200A729DC /* Build configuration list for PBXNativeTarget "BrainWave-App" */;
+			buildConfigurationList = 034168BF299F934200A729DC /* Build configuration list for PBXNativeTarget "Minerva-App" */;
 			buildPhases = (
 				034168A7299F934100A729DC /* Sources */,
 				034168A8299F934100A729DC /* Frameworks */,
@@ -523,12 +523,12 @@
 			);
 			dependencies = (
 			);
-			name = "BrainWave-App";
+			name = "Minerva-App";
 			packageProductDependencies = (
 				0466AF2929B0F6CF001D5430 /* OpenAIKit */,
 			);
 			productName = "BrainWave-App";
-			productReference = 034168AB299F934100A729DC /* BrainWave-App.app */;
+			productReference = 034168AB299F934100A729DC /* Minerva-App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -546,7 +546,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 034168A6299F934100A729DC /* Build configuration list for PBXProject "BrainWave-App" */;
+			buildConfigurationList = 034168A6299F934100A729DC /* Build configuration list for PBXProject "Minerva-App" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -564,7 +564,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				034168AA299F934100A729DC /* BrainWave-App */,
+				034168AA299F934100A729DC /* Minerva-App */,
 			);
 		};
 /* End PBXProject section */
@@ -741,7 +741,7 @@
 				0340037A29ACECF80094A8D7 /* CollectionView.swift in Sources */,
 				04256DE12A2137D6008BDE56 /* Keys.swift in Sources */,
 				0362C09329B8A3C70079A71C /* LoadingView.swift in Sources */,
-				034168AF299F934100A729DC /* BrainWave_AppApp.swift in Sources */,
+				034168AF299F934100A729DC /* Minerva_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,7 +956,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		034168A6299F934100A729DC /* Build configuration list for PBXProject "BrainWave-App" */ = {
+		034168A6299F934100A729DC /* Build configuration list for PBXProject "Minerva-App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				034168BD299F934200A729DC /* Debug */,
@@ -965,7 +965,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		034168BF299F934200A729DC /* Build configuration list for PBXNativeTarget "BrainWave-App" */ = {
+		034168BF299F934200A729DC /* Build configuration list for PBXNativeTarget "Minerva-App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				034168C0299F934200A729DC /* Debug */,
