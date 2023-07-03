@@ -3,6 +3,8 @@ Developed by the BrainWave team, Minerva is an iOS app that uses artificial inte
 
 Let the Roman goddess of wisdom and arts Minerva inspire your works!
 
+Here you can check our Behance project: https://www.behance.net/gallery/172964705/UIUX-App-Design-Minerva
+
 ## Setup
 To use the app, you should build it on an iPad via XCode.
 
